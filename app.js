@@ -702,7 +702,7 @@
 
       <div class="raster-guide-grid">
         <div class="raster-guide">
-          <img src="imagenes/guias/hemorragia.webp" alt="Presión sobre hemorragia" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/01-presion-directa.webp" alt="Presión sobre hemorragia" onerror="this.src='icon-512.png'">
           <div>
             <h3>Presión sobre Hemorragia</h3>
             <p>Presiona firmemente sobre la herida con tela limpia. No retires el apósito si se empapa; añade otro encima.</p>
@@ -710,7 +710,7 @@
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/quemadura.webp" alt="Enfriamiento de quemadura" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/05-enfriar-quemadura.webp" alt="Enfriamiento de quemadura" onerror="this.src='icon-512.png'">
           <div>
             <h3>Enfriamiento de Quemadura</h3>
             <p>15 a 20 minutos bajo agua corriente limpia templada/fresca. Nunca aplicar hielo directo ni pomadas grasas.</p>
@@ -718,7 +718,7 @@
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/atragantamiento.webp" alt="Maniobra de atragantamiento" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/04-atragantamiento-adulto.webp" alt="Maniobra de atragantamiento" onerror="this.src='icon-512.png'">
           <div>
             <h3>Maniobra de Atragantamiento</h3>
             <p>5 golpes secos en la espalda entre las escápulas alternados con 5 compresiones abdominales (Heimlich).</p>
@@ -726,7 +726,7 @@
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/recuperacion.webp" alt="Posición lateral de seguridad" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/03-posicion-lateral.webp" alt="Posición lateral de seguridad" onerror="this.src='icon-512.png'">
           <div>
             <h3>Posición Lateral de Seguridad</h3>
             <p>Para personas inconscientes que respiran con normalidad. Mantiene la vía aérea abierta y evita asfixia.</p>
@@ -734,7 +734,7 @@
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/mascota.webp" alt="Evacuación con mascota" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/15-kirby-transportin.webp" alt="Evacuación con mascota" onerror="this.src='icon-512.png'">
           <div>
             <h3>Mascota en Transportín</h3>
             <p>Nunca evacuar con animales sueltos. Asegurar arnés, correa y transportín rígido ventilado.</p>
@@ -742,7 +742,7 @@
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/gas.webp" alt="Cierre de llave de gas" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/07-olor-gas-no-interruptores.webp" alt="Cierre de llave de gas" onerror="this.src='icon-512.png'">
           <div>
             <h3>Cierre de Gas y Ventilación</h3>
             <p>Girar la llave de paso 90 grados transversalmente al tubo. Ventilar y no generar ninguna chispa.</p>
