@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'open-refugio-v2';
+const CACHE_NAME = 'open-refugio-v3';
 const CORE_FILES = [
   './',
   './index.html',
@@ -9,6 +9,7 @@ const CORE_FILES = [
   './profile.js',
   './content.js',
   './herramientas.js',
+  './posters.js',
   './app.js',
   './manifest.webmanifest',
   './icon.svg',

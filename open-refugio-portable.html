@@ -49,6 +49,64 @@
 .lang-btn{font-size:12px;font-weight:700;padding:4px 8px;border:0;background:transparent;border-radius:4px;min-height:32px;cursor:pointer}
 .lang-btn[aria-pressed=true]{background:var(--teal);color:var(--white)}
 .profile-badge{display:inline-flex;align-items:center;gap:6px;font:12px var(--mono);background:var(--mint);color:var(--teal);padding:4px 8px;border-radius:4px;border:1px solid #b3d1c7}
+
+/* Carteles imprimibles A4 y etiquetas térmicas (compositor de #posters) */
+.poster-controls{display:grid;grid-template-columns:1fr 1.3fr 1.2fr 1fr;gap:18px;margin-bottom:8px}
+.poster-preview{margin:28px auto 20px;max-width:820px}
+.poster-preview-label{display:flex;justify-content:space-between;font:12px var(--mono);letter-spacing:1px;color:var(--muted);margin-bottom:8px}
+.print-poster{--poster-accent:#20695e;background:#fff;color:#111;border:2px solid #111;overflow:hidden;display:grid;grid-template-columns:1fr;grid-template-rows:60% 1fr;width:100%;aspect-ratio:210/297;box-shadow:0 10px 35px #203f4920}
+.poster-visual{min-width:0;background:#e8efec;display:grid;place-items:center;overflow:hidden;border-bottom:3px solid var(--poster-accent)}
+.poster-visual img{width:100%;height:100%;object-fit:contain;object-position:center}
+.poster-copy{padding:3.5% 5% 4%;display:flex;flex-direction:column;min-width:0}
+.poster-language{padding:0 0 4%;margin:0 0 4%;border-bottom:2px solid #111}
+.poster-language>span{display:block;font:700 12px var(--mono);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;color:var(--poster-accent)}
+.poster-language h2{font:900 clamp(24px,3vw,45px)/.98 var(--body);letter-spacing:-1.5px;margin:0 0 14px;text-transform:uppercase}
+.poster-language p{font-size:clamp(14px,1.45vw,21px);line-height:1.3;margin:0 0 10px}
+.poster-language strong{font-size:clamp(13px,1.2vw,18px);line-height:1.3}
+.poster-language:last-of-type{border-bottom:0}
+.poster-footer{margin-top:auto;border-top:3px solid #111;padding-top:10px;display:flex;justify-content:space-between;gap:14px;font:11px/1.25 var(--mono);color:#111}
+.poster-red{--poster-accent:#9f2424}.poster-amber{--poster-accent:#78500d}
+.poster-mono .poster-visual img,.poster-small .poster-visual img,.poster-large .poster-visual img{filter:grayscale(1) contrast(1.6)}
+.poster-mono{--poster-accent:#000}
+.poster-columns .poster-copy{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;align-content:start}
+.poster-columns .poster-language{border:0;margin:0;padding:0}
+.poster-columns .poster-footer{grid-column:1/-1}
+.poster-a4h{aspect-ratio:297/210;grid-template-columns:70.7% 1fr;grid-template-rows:1fr}
+.poster-a4h .poster-visual{border-bottom:0;border-right:3px solid var(--poster-accent)}
+.poster-a4h .poster-language h2{font-size:clamp(18px,2.4vw,36px)}
+.poster-a4h .poster-language p{font-size:clamp(12px,1.2vw,17px)}
+.poster-a4h .poster-language strong{font-size:clamp(11px,1.05vw,15px)}
+.poster-large{aspect-ratio:101.6/152.4;grid-template-rows:50% 1fr}
+.poster-large .poster-copy{padding:3mm 4mm}
+.poster-large .poster-language>span{font-size:clamp(6px,.9vw,10px);margin-bottom:2px}
+.poster-large .poster-language h2{font-size:clamp(14px,2.6vw,34px);line-height:1;letter-spacing:-.5px;margin-bottom:4px}
+.poster-large .poster-language p{font-size:clamp(9px,1.5vw,17px);font-weight:700;line-height:1.15;margin:0 0 4px}
+.poster-large .poster-language strong{font-size:clamp(8px,1.2vw,14px);font-weight:800}
+.poster-large .poster-footer{padding-top:3px;border-top:1px solid #000;font-size:clamp(6px,.7vw,9px)}
+.poster-small{grid-template-columns:39% 61%;box-shadow:0 5px 20px #203f4920}
+.poster-small .poster-visual{border-bottom:0;border-right:2px solid var(--poster-accent)}
+.poster-small .poster-copy{padding:4%}
+.poster-small .poster-language{border:0;margin:0;padding:0}
+.poster-small .poster-language>span{font-size:clamp(6px,.9vw,10px);margin-bottom:2px;color:#000}
+.poster-small .poster-language h2{font-size:clamp(12px,2.4vw,26px);line-height:.95;letter-spacing:-.5px;margin-bottom:4px}
+.poster-small .poster-language p{font-size:clamp(8px,1.25vw,13px);font-weight:700;line-height:1.05;margin:0}
+.poster-small .poster-language strong{display:none}
+.poster-small .poster-footer{padding-top:3px;border-top:1px solid #000;font-size:clamp(5px,.7vw,8px)}
+.poster-small .poster-footer span{display:none}
+.poster-tiny .poster-footer{display:none}
+#poster-print-root[data-mode=all] .print-poster{margin-bottom:24px}
+/* Señales de advertencia: banda superior, pictograma vectorial propio y frase de acción. */
+.poster-sign{--sign-accent:#20695e;grid-template-columns:1fr;grid-template-rows:auto 1fr auto;border:2.2mm solid #111;background:#fff}
+.sign-band{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--sign-accent);color:#fff;padding:.45em .6em;font:900 clamp(15px,2.4vw,32px)/1 var(--body);letter-spacing:1.2px}
+.sign-band small{font:700 .32em var(--mono);letter-spacing:2px;white-space:nowrap}
+.sign-peligro,.sign-prohibido{--sign-accent:#9f2424}.sign-advertencia{--sign-accent:#78500d}.sign-emergencia{--sign-accent:#1c7a44}
+.sign-picto{display:grid;place-items:center;padding:4%;min-height:0;color:#111;border-bottom:.8mm solid #111}
+.sign-picto svg{width:100%;height:100%;max-height:100%}
+.sign-lines{padding:2.5% 4%;display:flex;flex-direction:column;gap:4px}
+.sign-lines p{margin:0;font-size:clamp(10px,1.4vw,18px);line-height:1.25}
+.poster-mono .sign-band{background:#111}
+@media(max-width:760px){.poster-controls{grid-template-columns:1fr 1fr}.print-poster{grid-template-columns:1fr;grid-template-rows:auto 1fr;aspect-ratio:auto}.poster-a4 .poster-visual,.poster-large .poster-visual{aspect-ratio:1.45}.poster-a4h{grid-template-columns:1fr;grid-template-rows:auto 1fr}.poster-a4h .poster-visual{aspect-ratio:1.6;border-right:0;border-bottom:3px solid var(--poster-accent)}.poster-columns .poster-copy{grid-template-columns:1fr}.poster-copy{padding:24px}.poster-language h2{font-size:28px}.poster-language p{font-size:16px}.poster-small{grid-template-columns:39% 61%}.poster-small .poster-visual{aspect-ratio:auto}.poster-small .poster-copy{padding:4%}.poster-small .poster-language h2{font-size:clamp(12px,4.2vw,18px)}.poster-small .poster-language p{font-size:clamp(8px,2.4vw,11px)}.poster-sign{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}.poster-sign .sign-picto{min-height:190px}.poster-sign .sign-picto svg{height:auto}}
+@media print{body.poster-printing{padding-bottom:0!important}body.poster-printing .sidebar,body.poster-printing .topbar,body.poster-printing .workspace>footer,body.poster-printing main>*:not(.poster-preview),body.poster-printing .poster-preview>.poster-preview-label{display:none!important}body.poster-printing .poster-preview{margin:0!important;max-width:none!important}body.poster-printing #poster-print-root{display:block!important}body.poster-printing .print-poster{box-shadow:none;border:0;break-after:page;page-break-after:always}body.poster-printing .print-poster:last-child{break-after:auto;page-break-after:auto}body.poster-printing .poster-copy{padding:6mm}body.poster-printing .poster-language h2{font-size:28pt}body.poster-printing .poster-language p{font-size:13pt}body.poster-printing .poster-language strong{font-size:11pt}body.poster-printing .print-poster:not(.poster-tiny) .poster-footer{display:flex!important}body.poster-printing .poster-tiny .poster-footer{display:none!important}body.poster-printing .poster-a4h .poster-language h2{font-size:20pt}body.poster-printing .poster-a4h .poster-language p{font-size:11pt}body.poster-printing .poster-a4h .poster-language strong{font-size:9.5pt}body.poster-printing .poster-a4.poster-columns .poster-copy{padding:5mm 6mm;gap:6mm}body.poster-printing .poster-a4.poster-columns .poster-language h2{font-size:24pt}body.poster-printing .poster-a4.poster-columns .poster-language p{font-size:12pt}body.poster-printing .poster-a4.poster-columns .poster-language strong{font-size:11pt}body.poster-printing .poster-large .poster-copy{padding:3mm;gap:3mm}body.poster-printing .poster-large .poster-language>span{font-size:8pt}body.poster-printing .poster-large .poster-language h2{font-size:18pt}body.poster-printing .poster-large .poster-language p{font-size:12pt;font-weight:700}body.poster-printing .poster-large .poster-language strong{font-size:12pt;font-weight:800}body.poster-printing .poster-large .poster-footer{font-size:7pt}body.poster-printing .poster-small{grid-template-columns:39% 61%}body.poster-printing .poster-small .poster-copy{padding:1.5mm}body.poster-printing .poster-small .poster-language>span{font-size:var(--ps-span,7pt);margin-bottom:1mm}body.poster-printing .poster-small .poster-language h2{font-size:var(--ps-title,13pt);margin-bottom:1mm}body.poster-printing .poster-small .poster-language p{font-size:var(--ps-p,8.5pt);font-weight:700}body.poster-printing .poster-small .poster-footer{font-size:var(--ps-foot,6pt);padding-top:.7mm}body.poster-printing .poster-sign{border:2.2mm solid #111}body.poster-printing .sign-band{font-size:20pt}body.poster-printing .sign-lines p{font-size:12.5pt}body.poster-printing .poster-a4h .sign-band{font-size:14pt}body.poster-printing .poster-a4h .sign-lines p{font-size:10.5pt}body.poster-printing .poster-large .sign-band{font-size:11pt}body.poster-printing .poster-large .sign-lines p{font-size:9.5pt}}
 </style>
   
   
@@ -81,6 +139,7 @@
     </footer>
   </div>
 
+  
   
   
   
@@ -211,6 +270,25 @@ window.OpenRefugioI18n = (function() {
       postersTitle: 'Carteles y Etiquetas Térmicas Imprimibles',
       postersDesc: 'Genera carteles de emergencia en A4 o etiquetas adhesivas para rollos térmicos tipo MUNBYN.',
       printNow: 'Imprimir',
+      postersType: 'Tipo de cartel',
+      postersTypeGuide: 'Ilustración paso a paso',
+      postersTypeSign: 'Señal de advertencia',
+      postersInfo: 'Información',
+      postersFormat: 'Papel o etiqueta',
+      postersLanguage: 'Idioma',
+      postersLangAll: 'ES + EN + NL',
+      postersMono: 'Vista previa en blanco y negro',
+      postersMonoHint: 'Se activa automáticamente en los formatos térmicos MUNBYN. Aumenta el contraste para impresión térmica.',
+      postersPrintThis: 'Imprimir este cartel',
+      postersPrintAll: 'Imprimir los 11 en A4',
+      postersPreview: 'VISTA PREVIA',
+      postersHelpA4: 'Cartel para pared. Puedes imprimir uno o la colección completa; cada cartel ocupa una hoja.',
+      postersHelpSmall: 'En esta medida caben el titular y la acción clave, en un idioma. Usa papel continuo o etiqueta troquelada del tamaño elegido.',
+      postersHelpLarge: 'Admite uno o tres idiomas. La composición aprovecha la etiqueta MUNBYN de 4 × 6 in (101,6 × 152,4 mm). El blanco y negro de alto contraste se activa solo, como pide la impresión térmica.',
+      postersHelpSign: 'Cartel-señal para pared: banda superior, pictograma vectorial propio y la frase de acción. Imprime uno o la colección completa. Las etiquetas pequeñas no se ofrecen porque una señal necesita pictograma completo.',
+      postersHelpSignLarge: 'Señal de alto contraste para la etiqueta MUNBYN de 4 × 6 in. Un idioma, pictograma vectorial y frase de acción en negrita; el blanco y negro se activa solo, como pide la impresión térmica.',
+      postersTips: 'Ajustes recomendados para MUNBYN',
+      postersTipsBody: 'En el diálogo de impresión: escala 100 %, márgenes «ninguno», sin encabezados ni pies. En térmica, selecciona blanco y negro y prueba una sola etiqueta antes de una tirada; si el texto sale fino, sube la densidad u «oscuridad» en la aplicación de la impresora. Si el controlador gira la salida, cambia su orientación; no uses «ajustar a página».',
 
       // Disclaimer
       disclaimerText: 'Información civil y sanitaria basada en recomendaciones oficiales de la Cruz Roja, Protección Civil y ministerios de salud. No sustituye el criterio médico ni las instrucciones de los servicios de emergencia.'
@@ -321,6 +399,25 @@ window.OpenRefugioI18n = (function() {
       postersTitle: 'Printable Posters & Thermal Labels',
       postersDesc: 'Generate printable A4 emergency notices or adhesive roll labels for MUNBYN thermal printers.',
       printNow: 'Print',
+      postersType: 'Poster type',
+      postersTypeGuide: 'Step-by-step illustration',
+      postersTypeSign: 'Warning sign',
+      postersInfo: 'Information',
+      postersFormat: 'Paper or label',
+      postersLanguage: 'Language',
+      postersLangAll: 'ES + EN + NL',
+      postersMono: 'Black and white preview',
+      postersMonoHint: 'Turns on automatically for MUNBYN thermal formats. Increases contrast for thermal printing.',
+      postersPrintThis: 'Print this poster',
+      postersPrintAll: 'Print all 11 on A4',
+      postersPreview: 'PREVIEW',
+      postersHelpA4: 'Wall poster. Print one or the full collection; each poster fills one sheet.',
+      postersHelpSmall: 'At this size only the headline and key action fit, in one language. Use continuous paper or a die-cut label of the chosen size.',
+      postersHelpLarge: 'Fits one or three languages. The layout targets the MUNBYN 4 × 6 in label (101.6 × 152.4 mm). High-contrast black and white turns on automatically, as thermal printing requires.',
+      postersHelpSign: 'Wall sign: header band, original vector pictogram and the action line. Print one or the full collection. Small labels are not offered because a sign needs the full pictogram.',
+      postersHelpSignLarge: 'High-contrast sign for the MUNBYN 4 × 6 in label. One language, vector pictogram and bold action line; black and white turns on automatically, as thermal printing requires.',
+      postersTips: 'Recommended MUNBYN settings',
+      postersTipsBody: 'In the print dialog: scale 100 %, margins «none», no headers or footers. For thermal printing, choose black and white and test a single label before a batch; if text prints thin, raise the density or «darkness» in the printer app. If the driver rotates the output, change its orientation; do not use «fit to page».',
 
       // Disclaimer
       disclaimerText: 'Civic and first-aid guidelines derived from Red Cross, civil protection, and public health agencies. Does not replace professional medical advice or orders from emergency services.'
@@ -431,6 +528,25 @@ window.OpenRefugioI18n = (function() {
       postersTitle: 'Afdrukbare Posters en Thermische Labels',
       postersDesc: 'Maak A4 noodposters of zelfklevende etiketten voor MUNBYN thermische printers.',
       printNow: 'Afdrukken',
+      postersType: 'Type poster',
+      postersTypeGuide: 'Illustratie stap voor stap',
+      postersTypeSign: 'Waarschuwingsbord',
+      postersInfo: 'Informatie',
+      postersFormat: 'Papier of etiket',
+      postersLanguage: 'Taal',
+      postersLangAll: 'ES + EN + NL',
+      postersMono: 'Zwart-wit voorbeeld',
+      postersMonoHint: 'Schakelt automatisch in bij MUNBYN thermische formaten. Verhoogt het contrast voor thermische afdruk.',
+      postersPrintThis: 'Dit poster afdrukken',
+      postersPrintAll: 'Alle 11 op A4 afdrukken',
+      postersPreview: 'VOORBEELD',
+      postersHelpA4: 'Poster voor aan de muur. Print er een of de hele collectie; elk poster vult een vel.',
+      postersHelpSmall: 'In dit formaat passen alleen de kop en de belangrijkste actie, in één taal. Gebruik continu papier of een gestanst etiket van het gekozen formaat.',
+      postersHelpLarge: 'Geschikt voor één of drie talen. De opmaak is gericht op het MUNBYN-etiket van 4 × 6 in (101,6 × 152,4 mm). Hoog-contrast zwart-wit schakelt automatisch in, zoals thermische afdruk vereist.',
+      postersHelpSign: 'Bord voor aan de muur: band bovenaan, eigen vectorpictogram en de actieregel. Print er een of de hele collectie. Kleine etiketten worden niet aangeboden omdat een bord het volledige pictogram nodig heeft.',
+      postersHelpSignLarge: 'Bord met hoog contrast voor het MUNBYN-etiket van 4 × 6 in. Eén taal, vectorpictogram en actieregel in vet; zwart-wit schakelt automatisch in, zoals thermische afdruk vereist.',
+      postersTips: 'Aanbevolen MUNBYN-instellingen',
+      postersTipsBody: 'In het afdrukdialoogvenster: schaal 100 %, marges «geen», zonder kop- of voettekst. Kies bij thermische afdruk zwart-wit en test eerst één etiket voor een hele reeks; als tekst te fijn print, verhoog dan de dichtheid of «donker» in de printerapp. Draait het stuurprogramma de uitvoer, wijzig dan de oriëntatie; gebruik geen «aanpassen aan pagina».',
 
       // Disclaimer
       disclaimerText: 'Informatie samengesteld op basis van adviezen van Rode Kruis, Veiligheidsregio en overheid. Vervangt geen medisch advies of directe bevelen van hulpdiensten.'
@@ -927,6 +1043,223 @@ window.OpenRefugioTools = (function() {
     <script>'use strict';
 
 /**
+ * OpenRefugio - Compositor de carteles imprimibles
+ * Dos familias (ilustración paso a paso y señal de advertencia), A4 y
+ * etiquetas térmicas MUNBYN con @page exacto. Contenido trilingüe fijo
+ * (es/en/nl); interfaz traducida por OpenRefugioI18n.
+ */
+window.OpenRefugioPosters = (function () {
+  const I18n = window.OpenRefugioI18n;
+
+  const P = [
+    { id: 'llamar', image: 'imagenes/guias/18-llamar-112.webp', tone: 'red', copy: { es: ['EMERGENCIA: LLAMA AL 112', 'Ponte a salvo. Di qué ocurre, dónde estás y cuántas personas están afectadas.', 'Sigue las instrucciones del operador.'], en: ['EMERGENCY: CALL 112', 'Get to safety. Say what happened, where you are and how many people need help.', 'Follow the operator’s instructions.'], nl: ['NOODGEVAL: BEL 112', 'Breng jezelf in veiligheid. Zeg wat er is gebeurd, waar je bent en hoeveel mensen hulp nodig hebben.', 'Volg de instructies van de centralist.'] } },
+    { id: 'sangrado', image: 'imagenes/guias/01-presion-directa.webp', tone: 'red', copy: { es: ['SANGRADO ABUNDANTE', 'Presiona con firmeza usando una tela limpia. Mantén la presión.', 'Llama al 112. No cosas la herida.'], en: ['SEVERE BLEEDING', 'Press firmly with a clean cloth. Keep applying pressure.', 'Call 112. Do not stitch the wound.'], nl: ['ERNSTIGE BLOEDING', 'Druk stevig met een schone doek. Blijf druk geven.', 'Bel 112. Hecht de wond niet zelf.'] } },
+    { id: 'gas', image: 'imagenes/guias/07-olor-gas-no-interruptores.webp', tone: 'amber', copy: { es: ['OLOR A GAS', 'No toques interruptores ni uses el teléfono dentro. Sal sin crear chispas.', 'Llama desde fuera. 112 si hay peligro inmediato.'], en: ['SMELL OF GAS', 'Do not touch switches or use a phone indoors. Leave without creating sparks.', 'Call from outside. Call 112 for immediate danger.'], nl: ['GASLUCHT', 'Raak geen schakelaars aan en bel niet binnen. Ga naar buiten zonder vonken te maken.', 'Bel van buiten. 112 bij direct gevaar.'] } },
+    { id: 'monoxido', image: 'imagenes/guias/06-no-combustion-interior.webp', tone: 'amber', copy: { es: ['PELIGRO: MONÓXIDO', 'Barbacoa, generador y hornillo de exterior: siempre al aire libre y lejos de aberturas.', 'Nunca en casa, garaje, portal, tienda o cobertizo.'], en: ['DANGER: CARBON MONOXIDE', 'Barbecue, generator and outdoor stove: always outdoors and away from openings.', 'Never in a home, garage, porch, tent or shed.'], nl: ['GEVAAR: KOOLMONOXIDE', 'Barbecue, generator en buitenkooktoestel: altijd buiten en weg van openingen.', 'Nooit in huis, garage, portiek, tent of schuur.'] } },
+    { id: 'aire', image: 'imagenes/guias/09-refugio-interior.webp', tone: 'teal', copy: { es: ['AIRE EXTERIOR CONTAMINADO', 'Entra. Cierra puertas y ventanas. Apaga la ventilación exterior.', 'Aléjate del cristal y sigue los avisos oficiales.'], en: ['CONTAMINATED OUTDOOR AIR', 'Go inside. Close doors and windows. Turn off outside ventilation.', 'Stay away from glass and follow official alerts.'], nl: ['VERONTREINIGDE BUITENLUCHT', 'Ga naar binnen. Sluit ramen en deuren. Zet buitenventilatie uit.', 'Blijf weg van glas en volg officiële waarschuwingen.'] } },
+    { id: 'inundacion', image: 'imagenes/guias/10-inundacion-subir-salida.webp', tone: 'teal', copy: { es: ['INUNDACIÓN: SUBE CON SALIDA', 'Ve a un nivel alto que conserve una salida practicable.', 'No bajes al sótano ni quedes atrapado en un ático. Sigue los avisos oficiales.'], en: ['FLOOD: GO HIGH WITH AN EXIT', 'Move to a high level that still has a usable exit.', 'Do not enter a basement or become trapped in an attic. Follow official alerts.'], nl: ['OVERSTROMING: HOOG MET UITWEG', 'Ga naar een hoge plek met een bruikbare uitgang.', 'Ga niet naar de kelder en raak niet opgesloten op zolder. Volg officiële waarschuwingen.'] } },
+    { id: 'agua', image: 'imagenes/guias/11-separar-agua.webp', tone: 'teal', copy: { es: ['AGUA POTABLE: SEPARAR', 'Guarda el agua de beber limpia, cerrada y separada del agua para WC o limpieza.', 'No bebas agua de canal, lluvia o recipiente sin confirmar que es potable.'], en: ['DRINKING WATER: KEEP SEPARATE', 'Keep drinking water clean, closed and separate from toilet or cleaning water.', 'Do not drink canal or rainwater unless it is confirmed safe.'], nl: ['DRINKWATER: APART HOUDEN', 'Bewaar drinkwater schoon, afgesloten en apart van water voor wc of schoonmaak.', 'Drink geen kanaal- of regenwater zonder bevestiging dat het veilig is.'] } },
+    { id: 'quemadura', image: 'imagenes/guias/05-enfriar-quemadura.webp', tone: 'red', copy: { es: ['QUEMADURA: ENFRÍA', 'Agua corriente suave y templada sobre la quemadura durante 10–20 minutos.', 'No uses hielo, cremas ni arranques ropa pegada.'], en: ['BURN: COOL IT', 'Use gentle, lukewarm running water on the burn for 10–20 minutes.', 'Do not use ice or cream. Do not pull off stuck clothing.'], nl: ['BRANDWOND: KOELEN', 'Koel 10–20 minuten met zacht, lauw stromend water op de brandwond.', 'Gebruik geen ijs of crème. Trek vastzittende kleding niet los.'] } },
+    { id: 'evacuacion', image: 'imagenes/guias/14-mochila-evacuacion.webp', tone: 'teal', copy: { es: ['BOLSA DE SALIDA', 'Medicación, identificación, llaves, agua, linterna, radio, batería y abrigo.', 'No retrases una evacuación urgente para completar la bolsa.'], en: ['GO BAG', 'Medication, ID, keys, water, torch, radio, power bank and warm clothing.', 'Do not delay an urgent evacuation to finish the bag.'], nl: ['VERTREKTAS', 'Medicijnen, identiteitsbewijs, sleutels, water, zaklamp, radio, accu en warme kleding.', 'Stel een dringende evacuatie niet uit om de tas af te maken.'] } },
+    { id: 'mascota', image: 'imagenes/guias/15-kirby-transportin.webp', tone: 'teal', copy: { es: ['MASCOTA: EVACUAR CON SEGURIDAD', 'Mascota en el transportín. Lleva medicación, agua y tus datos de contacto.', 'No vuelvas a entrar en una zona peligrosa. Informa a los servicios de emergencia.'], en: ['PET: EVACUATE SAFELY', 'Pet in its carrier. Take medication, water and your contact details.', 'Do not re-enter a dangerous area. Tell the emergency services.'], nl: ['HUISDIER: VEILIG EVACUEREN', 'Huisdier in de reismand. Neem medicijnen, water en je contactgegevens mee.', 'Ga niet terug naar een gevaarlijke plek. Informeer de hulpdiensten.'] } },
+    { id: 'higiene', image: 'imagenes/guias/12-wc-emergencia.webp', tone: 'teal', copy: { es: ['WC DE EMERGENCIA', 'Separa orina y heces. Cierra los residuos. Lávate las manos.', 'Aléjalos de comida y agua. Sigue la recogida municipal.'], en: ['EMERGENCY TOILET', 'Separate urine and faeces. Seal waste. Wash your hands.', 'Keep waste away from food and water. Follow municipal instructions.'], nl: ['NOODTOILET', 'Scheid urine en ontlasting. Sluit afval af. Was je handen.', 'Houd afval weg van eten en water. Volg gemeentelijke instructies.'] } }
+  ];
+
+  /* Pictogramas vectoriales propios para la familia «señal». Trazo grueso, negro sobre blanco: nítidos en impresión térmica. */
+  const SVG_A = 'viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"';
+  const S = {
+    phone: `<svg ${SVG_A}><rect x="22" y="36" width="52" height="38" rx="7"/><rect x="14" y="22" width="68" height="13" rx="6.5"/><path d="M34 56h28M34 65h20"/></svg>`,
+    cross: `<svg ${SVG_A}><rect x="24" y="24" width="48" height="48" rx="7"/><path d="M48 36v24M36 48h24"/></svg>`,
+    gas: `<svg ${SVG_A}><path d="M28 78V44l20-16 20 16v34"/><path d="M48 68c-7-7-3-13 0-18 3 5 9 10 0 18z"/><circle cx="48" cy="50" r="39"/><path d="M20 22l56 56"/></svg>`,
+    monoxido: `<svg ${SVG_A}><path d="M28 78V44l20-16 20 16v34"/><path d="M36 78v-9a12 12 0 0 1 24 0v9"/><path d="M41 66h14"/><path d="M42 55q5-5 0-10M54 55q-5-5 0-10"/></svg>`,
+    aire: `<svg ${SVG_A}><path d="M25 46a10 10 0 0 1 19-4 13 13 0 0 1 23 3 9 9 0 0 1 4 18H30a11 11 0 0 1-5-17z"/><circle cx="42" cy="55" r="2.6" fill="currentColor" stroke="none"/><circle cx="54" cy="55" r="2.6" fill="currentColor" stroke="none"/><path d="M43 64h10"/></svg>`,
+    inundacion: `<svg ${SVG_A}><path d="M28 70V42l20-16 20 16v28"/><path d="M33 70v-9h8v-8h8v-8h8"/><path d="M57 37v13M51 43l6-8 6 8"/><path d="M10 84q5-4 10 0t10 0M66 84q5-4 10 0t10 0"/></svg>`,
+    agua: `<svg ${SVG_A}><path d="M28 28v14h28a9 9 0 0 1 9 9v7"/><path d="M20 28h16"/><path d="M36 64h22l-3 20H39z"/><circle cx="48" cy="52" r="39"/><path d="M20 22l56 56"/></svg>`,
+    quemadura: `<svg ${SVG_A}><path d="M34 78V58a14 14 0 0 1 28 0v20"/><path d="M34 64q-11 0-11 9"/><path d="M40 36q-5 7 0 10 5-3 0-10zM56 30q-5 7 0 10 5-3 0-10zM48 48q-4 6 0 8 4-2 0-8z" fill="currentColor"/></svg>`,
+    mochila: `<svg ${SVG_A}><rect x="20" y="40" width="32" height="34" rx="8"/><path d="M28 40v-5a8 8 0 0 1 16 0v5"/><rect x="28" y="54" width="16" height="12" rx="3"/><path d="M60 57h20M74 50l8 7-8 7"/></svg>`,
+    mascota: `<svg ${SVG_A}><rect x="20" y="42" width="56" height="32" rx="9"/><path d="M34 42a14 14 0 0 1 28 0"/><path d="M38 42l4-13 9 9M58 42l-4-13-9 9"/><circle cx="40" cy="55" r="2.6" fill="currentColor" stroke="none"/><circle cx="56" cy="55" r="2.6" fill="currentColor" stroke="none"/><path d="M28 64h40"/></svg>`,
+    wc: `<svg ${SVG_A}><path d="M28 42h40l-5 36H33z"/><ellipse cx="48" cy="41" rx="21" ry="6"/><circle cx="78" cy="68" r="10"/><circle cx="78" cy="68" r="3.5"/></svg>`
+  };
+  const SIGNWORD = { emergencia: 'EMERGENCIA', auxilios: 'PRIMEROS AUXILIOS', peligro: 'PELIGRO', advertencia: 'ADVERTENCIA', prohibido: 'PROHIBIDO', informacion: 'INFORMACIÓN' };
+  const SIGNLIST = [
+    { id: 'llamar', from: 'llamar', type: 'emergencia', svg: S.phone },
+    { id: 'sangrado', from: 'sangrado', type: 'auxilios', svg: S.cross },
+    { id: 'gas', from: 'gas', type: 'prohibido', svg: S.gas },
+    { id: 'monoxido', from: 'monoxido', type: 'peligro', svg: S.monoxido },
+    { id: 'aire', from: 'aire', type: 'advertencia', svg: S.aire },
+    { id: 'inundacion', from: 'inundacion', type: 'advertencia', svg: S.inundacion },
+    { id: 'agua', from: 'agua', type: 'prohibido', svg: S.agua },
+    { id: 'quemadura', from: 'quemadura', type: 'auxilios', svg: S.quemadura },
+    { id: 'evacuacion', from: 'evacuacion', type: 'informacion', svg: S.mochila },
+    { id: 'mascota', from: 'mascota', type: 'informacion', svg: S.mascota },
+    { id: 'higiene', from: 'higiene', type: 'informacion', svg: S.wc }
+  ];
+
+  const FORMATS = {
+    a4: { label: 'A4 · 210 × 297 mm', w: 210, h: 297, kind: 'a4' },
+    a4h: { label: 'A4 · 297 × 210 mm', w: 297, h: 210, kind: 'a4h' },
+    '4x6': { label: 'MUNBYN · 4 × 6 in · 101,6 × 152,4 mm', w: 101.6, h: 152.4, kind: 'large' },
+    '60x40': { label: 'MUNBYN · 60 × 40 mm', w: 60, h: 40, kind: 'small' },
+    '57x32': { label: 'MUNBYN · 57 × 32 mm', w: 57, h: 32, kind: 'small' },
+    '50x30': { label: 'MUNBYN · 50 × 30 mm', w: 50, h: 30, kind: 'small' },
+    '40x30': { label: 'MUNBYN · 40 × 30 mm', w: 40, h: 30, kind: 'small' }
+  };
+  const LANG = { es: 'ES', en: 'EN', nl: 'NL' };
+
+  let settings = { style: 'guia', poster: P[0].id, format: 'a4', lang: 'all', mono: false };
+  let printAll = false;
+  let bound = false;
+  let printGen = 0;
+
+  const poster = () => P.find(x => x.id === settings.poster) || P[0];
+  const sign = () => SIGNLIST.find(x => 'senal-' + x.id === settings.poster) || SIGNLIST[0];
+  const items = () => settings.style === 'senal' ? SIGNLIST : P;
+  const langs = () => settings.lang === 'all' ? ['es', 'en', 'nl'] : [settings.lang];
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+  function signSheet(s, all) {
+    const f = FORMATS[settings.format], ls = all ? ['es', 'en', 'nl'] : langs(), copy = P.find(x => x.id === s.from).copy;
+    return `<article class="print-poster poster-sign poster-${f.kind} sign-${s.type}${settings.mono ? ' poster-mono' : ''}" data-poster="senal-${s.id}" data-format="${settings.format}"><div class="sign-band"><b>${SIGNWORD[s.type]}</b><small>OPENREFUGIO · 112</small></div><div class="sign-picto">${s.svg}</div><div class="sign-lines">${ls.map(l => `<p lang="${l}"><strong>${esc(copy[l][0])}</strong> · ${esc(copy[l][2])}</p>`).join('')}</div></article>`;
+  }
+
+  function sheet(item, all = false) {
+    if (settings.style === 'senal') return signSheet(item && item.svg ? item : sign(), all);
+    const p = item && item.image ? item : poster();
+    const f = FORMATS[settings.format], ls = all ? ['es', 'en', 'nl'] : langs();
+    const cols = (f.kind === 'a4' || f.kind === 'large') && ls.length > 1;
+    const inline = f.kind === 'small' ? (() => { const t = Math.min(1.05, Math.max(0.5, Math.sqrt(f.w * f.h / 1500) * (f.w < 45 ? 0.85 : 1))); return ` style="aspect-ratio:${f.w}/${f.h};--ps-title:${(13 * t).toFixed(1)}pt;--ps-p:${(8.5 * t).toFixed(1)}pt;--ps-span:${(7 * t).toFixed(1)}pt;--ps-foot:${(6 * t).toFixed(1)}pt"`; })() : '';
+    return `<article class="print-poster poster-${f.kind} poster-${p.tone}${settings.mono ? ' poster-mono' : ''}${cols ? ' poster-columns' : ''}${f.kind === 'small' && f.w < 45 ? ' poster-tiny' : ''}" data-poster="${p.id}" data-format="${settings.format}"${inline}><div class="poster-visual"><img src="${p.image}" alt="" width="900" height="900"></div><div class="poster-copy">${ls.map((l, i) => `<section lang="${l}" class="poster-language${i === 0 ? ' primary-language' : ''}"><span>${LANG[l]}</span><h2>${esc(p.copy[l][0])}</h2><p>${esc(p.copy[l][f.kind === 'small' ? 2 : 1])}</p><strong>${esc(p.copy[l][2])}</strong></section>`).join('')}<footer class="poster-footer"><b>OPENREFUGIO · OFFLINE</b><span>112 · peligro inmediato / direct gevaar / immediate danger</span></footer></div></article>`;
+  }
+
+  function preview() {
+    const root = document.querySelector('#poster-print-root');
+    if (!root) return;
+    const list = items();
+    root.innerHTML = printAll ? list.map(p => sheet(p, true)).join('') : sheet();
+    root.dataset.mode = printAll ? 'all' : 'one';
+  }
+
+  function formatHelp() {
+    const f = FORMATS[settings.format];
+    if (settings.style === 'senal') return f.kind === 'large' ? I18n.t('postersHelpSignLarge') : I18n.t('postersHelpSign');
+    if (f.kind === 'small') return I18n.t('postersHelpSmall');
+    if (f.kind === 'large') return I18n.t('postersHelpLarge');
+    return I18n.t('postersHelpA4');
+  }
+
+  function choiceOptions() {
+    return items().map(p => {
+      const id = settings.style === 'senal' ? 'senal-' + p.id : p.id;
+      const label = P.find(x => x.id === (p.from || p.id)).copy.es[0];
+      return `<option value="${id}"${id === settings.poster ? ' selected' : ''}>${esc(label)}</option>`;
+    }).join('');
+  }
+
+  function sync() {
+    const senal = settings.style === 'senal';
+    if (senal && FORMATS[settings.format].kind === 'small') settings.format = '4x6';
+    const f = FORMATS[settings.format], thermal = f.kind === 'small' || f.kind === 'large';
+    if (thermal) { if (settings.lang === 'all') settings.lang = 'es'; settings.mono = true; }
+    const styleSel = document.querySelector('#poster-style');
+    if (styleSel) styleSel.value = settings.style;
+    const choice = document.querySelector('#poster-choice');
+    if (choice && choice.dataset.style !== settings.style) { choice.dataset.style = settings.style; choice.innerHTML = choiceOptions(); }
+    if (choice) choice.value = settings.poster;
+    const format = document.querySelector('#poster-format');
+    if (format) {
+      format.querySelectorAll('option').forEach(o => { o.disabled = senal && FORMATS[o.value].kind === 'small'; });
+      format.value = settings.format;
+    }
+    const lang = document.querySelector('#poster-language'), mono = document.querySelector('#poster-mono');
+    if (lang) { lang.value = settings.lang; lang.querySelector('option[value="all"]').disabled = thermal; }
+    if (mono) { mono.checked = settings.mono; mono.disabled = thermal; }
+    const help = document.querySelector('#poster-format-help');
+    if (help) help.textContent = formatHelp();
+    const size = document.querySelector('#poster-size-label');
+    if (size) size.textContent = f.label;
+    preview();
+  }
+
+  function print(mode) {
+    const gen = ++printGen;
+    const old = { format: settings.format, lang: settings.lang, mono: settings.mono, poster: settings.poster, style: settings.style };
+    printAll = mode === 'all';
+    if (printAll) { settings.format = 'a4'; settings.lang = 'all'; settings.mono = false; }
+    const f = FORMATS[settings.format];
+    preview();
+    let style = document.querySelector('#poster-page-style');
+    if (!style) { style = document.createElement('style'); style.id = 'poster-page-style'; document.head.appendChild(style); }
+    style.textContent = `@media print{@page{size:${f.w}mm ${f.h}mm;margin:0}body.poster-printing .print-poster{width:${f.w}mm;height:${f.h}mm}}`;
+    document.body.classList.add('poster-printing');
+    const done = () => {
+      if (gen !== printGen) return; // impresión superada por otra más reciente
+      printGen++;
+      document.body.classList.remove('poster-printing');
+      style.textContent = '';
+      settings = { ...settings, ...old };
+      printAll = false;
+      sync();
+      window.removeEventListener('afterprint', done);
+    };
+    window.addEventListener('afterprint', done);
+    window.print();
+    setTimeout(done, 1000);
+  }
+
+  function bind() {
+    if (bound) return;
+    bound = true;
+    document.addEventListener('change', e => {
+      if (e.target.id === 'poster-style') { settings.style = e.target.value; settings.poster = settings.style === 'senal' ? 'senal-' + SIGNLIST[0].id : P[0].id; }
+      if (e.target.id === 'poster-choice') settings.poster = e.target.value;
+      if (e.target.id === 'poster-format') settings.format = e.target.value;
+      if (e.target.id === 'poster-language') settings.lang = e.target.value;
+      if (e.target.id === 'poster-mono') settings.mono = e.target.checked;
+      if (e.target.closest('.poster-controls') || e.target.id === 'poster-mono') sync();
+    });
+    document.addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (b && b.id === 'print-poster') print('one');
+      if (b && b.id === 'print-all-posters') print('all');
+    });
+  }
+
+  function render(el) {
+    el.innerHTML = `
+      <div class="section-title">
+        <h2>🖨 ${I18n.t('postersTitle')}</h2>
+        <small class="muted">${I18n.t('postersDesc')}</small>
+      </div>
+      <div class="panel">
+        <div class="poster-controls no-print">
+          <div class="field"><label for="poster-style">${I18n.t('postersType')}</label><select id="poster-style"><option value="guia"${settings.style === 'guia' ? ' selected' : ''}>${I18n.t('postersTypeGuide')}</option><option value="senal"${settings.style === 'senal' ? ' selected' : ''}>${I18n.t('postersTypeSign')}</option></select></div>
+          <div class="field"><label for="poster-choice">${I18n.t('postersInfo')}</label><select id="poster-choice" data-style="${settings.style}">${choiceOptions()}</select></div>
+          <div class="field"><label for="poster-format">${I18n.t('postersFormat')}</label><select id="poster-format">${Object.entries(FORMATS).map(([id, f]) => `<option value="${id}"${id === settings.format ? ' selected' : ''}>${f.label}</option>`).join('')}</select></div>
+          <div class="field"><label for="poster-language">${I18n.t('postersLanguage')}</label><select id="poster-language"><option value="all"${settings.lang === 'all' ? ' selected' : ''}>${I18n.t('postersLangAll')}</option>${Object.entries(LANG).map(([id, n]) => `<option value="${id}"${id === settings.lang ? ' selected' : ''}>${n}</option>`).join('')}</select></div>
+        </div>
+        <label class="checkrow no-print"><input id="poster-mono" type="checkbox"${settings.mono ? ' checked' : ''}><span><strong>${I18n.t('postersMono')}</strong><small>${I18n.t('postersMonoHint')}</small></span></label>
+        <p id="poster-format-help" class="muted no-print">${formatHelp()}</p>
+        <div class="actions no-print">
+          <button type="button" id="print-poster" class="button primary">🖨 ${I18n.t('postersPrintThis')}</button>
+          <button type="button" id="print-all-posters" class="button">${I18n.t('postersPrintAll')}</button>
+        </div>
+      </div>
+      <div class="poster-preview">
+        <div class="poster-preview-label no-print"><span>${I18n.t('postersPreview')}</span><span id="poster-size-label">${FORMATS[settings.format].label}</span></div>
+        <div id="poster-print-root" aria-live="polite"></div>
+      </div>
+      <details class="no-print"><summary>${I18n.t('postersTips')}</summary><div class="detail"><p class="source">${I18n.t('postersTipsBody')}</p></div></details>`;
+    bind();
+    sync();
+  }
+
+  return { render, items: P, signs: SIGNLIST, formats: FORMATS };
+})();
+</script>
+    <script>'use strict';
+
+/**
  * OpenRefugio - Main Application Engine
  * Pure Vanilla JS, zero dependencies, client-side only.
  */
@@ -935,6 +1268,7 @@ window.OpenRefugioTools = (function() {
   const Profile = window.OpenRefugioProfile;
   const Content = window.OpenRefugioContent;
   const Tools = window.OpenRefugioTools;
+  const Posters = window.OpenRefugioPosters;
 
   const STATE_KEY = 'openrefugio:state:v1';
   let appState = {
@@ -1628,7 +1962,7 @@ window.OpenRefugioTools = (function() {
 
       <div class="raster-guide-grid">
         <div class="raster-guide">
-          <img src="imagenes/guias/hemorragia.webp" alt="Presión sobre hemorragia" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/01-presion-directa.webp" alt="Presión sobre hemorragia" onerror="this.src='icon-512.png'">
           <div>
             <h3>Presión sobre Hemorragia</h3>
             <p>Presiona firmemente sobre la herida con tela limpia. No retires el apósito si se empapa; añade otro encima.</p>
@@ -1636,7 +1970,7 @@ window.OpenRefugioTools = (function() {
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/quemadura.webp" alt="Enfriamiento de quemadura" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/05-enfriar-quemadura.webp" alt="Enfriamiento de quemadura" onerror="this.src='icon-512.png'">
           <div>
             <h3>Enfriamiento de Quemadura</h3>
             <p>15 a 20 minutos bajo agua corriente limpia templada/fresca. Nunca aplicar hielo directo ni pomadas grasas.</p>
@@ -1644,7 +1978,7 @@ window.OpenRefugioTools = (function() {
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/atragantamiento.webp" alt="Maniobra de atragantamiento" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/04-atragantamiento-adulto.webp" alt="Maniobra de atragantamiento" onerror="this.src='icon-512.png'">
           <div>
             <h3>Maniobra de Atragantamiento</h3>
             <p>5 golpes secos en la espalda entre las escápulas alternados con 5 compresiones abdominales (Heimlich).</p>
@@ -1652,7 +1986,7 @@ window.OpenRefugioTools = (function() {
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/recuperacion.webp" alt="Posición lateral de seguridad" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/03-posicion-lateral.webp" alt="Posición lateral de seguridad" onerror="this.src='icon-512.png'">
           <div>
             <h3>Posición Lateral de Seguridad</h3>
             <p>Para personas inconscientes que respiran con normalidad. Mantiene la vía aérea abierta y evita asfixia.</p>
@@ -1660,7 +1994,7 @@ window.OpenRefugioTools = (function() {
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/mascota.webp" alt="Evacuación con mascota" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/15-kirby-transportin.webp" alt="Evacuación con mascota" onerror="this.src='icon-512.png'">
           <div>
             <h3>Mascota en Transportín</h3>
             <p>Nunca evacuar con animales sueltos. Asegurar arnés, correa y transportín rígido ventilado.</p>
@@ -1668,7 +2002,7 @@ window.OpenRefugioTools = (function() {
         </div>
 
         <div class="raster-guide">
-          <img src="imagenes/guias/gas.webp" alt="Cierre de llave de gas" onerror="this.src='icon-512.png'">
+          <img src="imagenes/guias/07-olor-gas-no-interruptores.webp" alt="Cierre de llave de gas" onerror="this.src='icon-512.png'">
           <div>
             <h3>Cierre de Gas y Ventilación</h3>
             <p>Girar la llave de paso 90 grados transversalmente al tubo. Ventilar y no generar ninguna chispa.</p>
@@ -1679,6 +2013,10 @@ window.OpenRefugioTools = (function() {
   }
 
   function renderPostersRoute() {
+    if (Posters && typeof Posters.render === 'function') {
+      Posters.render(mainEl);
+      return;
+    }
     mainEl.innerHTML = `
       <div class="section-title">
         <h2>🖨 ${I18n.t('postersTitle')}</h2>

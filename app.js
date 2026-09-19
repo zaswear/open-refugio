@@ -9,6 +9,7 @@
   const Profile = window.OpenRefugioProfile;
   const Content = window.OpenRefugioContent;
   const Tools = window.OpenRefugioTools;
+  const Posters = window.OpenRefugioPosters;
 
   const STATE_KEY = 'openrefugio:state:v1';
   let appState = {
@@ -753,6 +754,10 @@
   }
 
   function renderPostersRoute() {
+    if (Posters && typeof Posters.render === 'function') {
+      Posters.render(mainEl);
+      return;
+    }
     mainEl.innerHTML = `
       <div class="section-title">
         <h2>🖨 ${I18n.t('postersTitle')}</h2>
