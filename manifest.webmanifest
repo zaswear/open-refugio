@@ -1,0 +1,21 @@
+{
+  "name": "OpenRefugio",
+  "short_name": "OpenRefugio",
+  "description": "Kit Personal y Familiar de Emergencias Offline",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#203f49",
+  "theme_color": "#203f49",
+  "icons": [
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

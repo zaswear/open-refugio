@@ -1,0 +1,6 @@
+jsQR 1.4.0
+Copyright (c) Cosmo Wolfe
+Licensed under the Apache License, Version 2.0.
+Texto completo: https://www.apache.org/licenses/LICENSE-2.0
+Fuente: https://github.com/cozmo/jsQR
+Incluido tal cual (compilación minificada de jsDelivr) para leer códigos QR sin red.

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenRefugio · Kit Personal y Familiar de Emergencias Offline. 100% estático, seguro y sin servidores.">
+  <title>OpenRefugio · Kit de Emergencias Offline</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <div class="sidebar">
+    <a href="#inicio" class="brand">
+      <div class="brand-icon">⛨</div>
+      <div>
+        <strong>OpenRefugio</strong>
+        <small>OFFLINE FIRST</small>
+      </div>
+    </a>
+
+    <nav id="navigation" aria-label="Navegación principal"></nav>
+
+    <div class="sidebar-bottom">
+      <div><span class="local-dot"></span>Almacén local activo</div>
+      <small>Cero telemetría · Cero servidores</small>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <header class="topbar" id="topbar"></header>
+    <main id="main" role="main"></main>
+    <footer>
+      <div>OpenRefugio · Kit Cívico de Emergencias Abierto · Licencia MIT</div>
+      <div><a href="https://github.com/zaswear/open-refugio" target="_blank" rel="noopener">GitHub</a></div>
+    </footer>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="profile.js"></script>
+  <script src="content.js"></script>
+  <script src="herramientas.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

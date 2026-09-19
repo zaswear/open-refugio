@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenRefugio · Kit Personal y Familiar de Emergencias Offline. 100% estático, seguro y sin servidores.">
+  <title>OpenRefugio · Kit de Emergencias Offline</title>
+  <style>:root{--paper:#f3f6f5;--white:#fff;--ink:#203f49;--muted:#526970;--line:#cbd8d9;--teal:#20695e;--mint:#e1efea;--red:#aa302f;--red-bg:#fff0ed;--amber:#805413;--amber-bg:#fff5df;--radius:12px;--body:Calibri,'Segoe UI',Arial,sans-serif;--display:Georgia,'Times New Roman',serif;--mono:Consolas,'Courier New',monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--body)}a{color:var(--teal);text-underline-offset:4px}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button,a.button{min-height:44px;border:1px solid var(--line);border-radius:7px;padding:10px 16px;background:var(--white);color:var(--ink);text-decoration:none;font-weight:600}button:hover,a.button:hover{border-color:var(--teal);background:var(--mint)}:focus-visible{outline:3px solid var(--teal);outline-offset:4px}input,select,textarea{width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:7px;background:var(--white);color:var(--ink)}input[type=checkbox]{width:23px;min-height:23px;height:23px;accent-color:var(--teal);flex-shrink:0}input[type=file]{max-width:100%}textarea{resize:vertical;min-height:90px}label{display:block;font-size:15px;font-weight:600}small,.muted{color:var(--muted)}small{font-size:14px}h1,h2,h3,p{margin-top:0}h1{font:normal clamp(36px,4vw,56px)/1.08 var(--display);letter-spacing:-1.5px;margin-bottom:20px}h2{font:normal 30px/1.2 var(--display);letter-spacing:-.5px}h3{font-size:20px;line-height:1.3}p{margin-bottom:16px}li{margin-bottom:8px}ul,ol{padding-left:25px}.sidebar{position:fixed;inset:0 auto 0 0;width:265px;padding:28px 20px;background:var(--white);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:auto}.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);font:32px/1 var(--display);margin:4px 0 30px}.brand-icon{display:grid;place-items:center;background:var(--ink);color:var(--white);border-radius:11px;width:46px;height:46px;font:36px var(--body)}.brand small{display:block;font:8px/2.4 var(--mono);letter-spacing:.4px;white-space:nowrap}.mode-switch{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px;margin-bottom:24px}.mode-switch button{font-size:13px;padding:7px 8px;flex:1;border:0;background:transparent;min-height:44px}.mode-switch button[aria-pressed=true]{background:var(--ink);color:var(--white)}.search-label{font-size:12px;color:var(--muted);margin-bottom:6px}#search{font-size:14px;margin-bottom:20px}.nav-label{font:11px var(--mono);letter-spacing:1.5px;color:var(--muted);margin:18px 12px 8px}.nav-link{display:flex;gap:12px;align-items:center;min-height:44px;padding:9px 12px;margin:2px 0;color:var(--muted);text-decoration:none;font-size:15px;border-radius:6px}.nav-link .symbol{font-size:18px;width:22px;text-align:center}.nav-link[aria-current=page]{color:var(--teal);background:var(--mint);font-weight:700}.nav-link:hover{background:var(--paper)}.sidebar-bottom{margin-top:auto;padding-top:30px;font-size:11px;color:var(--muted)}.sidebar-bottom small{display:block;font-size:11px;margin-top:4px}.local-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;display:inline-block;margin-right:5px}.workspace{margin-left:265px}.topbar{height:80px;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);font-size:13px;gap:12px}.topbar>div{display:flex;gap:18px;align-items:center}.quiet{background:transparent;font-size:13px}.call{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--red);text-decoration:none;padding:11px 0;white-space:nowrap}main{max-width:1240px;min-height:80vh;padding:44px 48px 60px;margin:auto}.eyebrow{font:12px/1.5 var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}.intro{max-width:660px;font-size:18px;color:var(--muted)}.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:40px;align-items:center;margin-bottom:36px}.signal{background:var(--ink);color:var(--white);padding:25px 28px;border-radius:var(--radius);position:relative}.signal small{color:var(--line)}.signal strong{display:block;font:48px/1.1 var(--mono);margin:10px 0}.signal .frequency{font:13px var(--mono);letter-spacing:1.3px}.signal p{font-size:14px;margin:14px 0 0;color:var(--line)}.signal:before{content:'';position:absolute;width:36px;height:7px;top:26px;right:25px;background:var(--mint);border-radius:4px}.emergency-strip{display:flex;gap:24px;align-items:center;justify-content:space-between;background:var(--red-bg);border:1px solid #e5bcb4;border-radius:var(--radius);padding:24px;margin-bottom:34px}.emergency-strip h3{color:var(--red);margin-bottom:6px}.emergency-strip p{margin:0;font-size:15px}.primary,a.primary{background:var(--teal);border-color:var(--teal);color:var(--white)}.primary:hover,a.primary:hover{background:var(--ink);color:var(--white)}.danger-button,a.danger-button{background:var(--red);border-color:var(--red);color:var(--white);white-space:nowrap}.section-title{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin:32px 0 16px}.section-title h2{margin:0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-bottom:20px;min-width:0}.grid .panel{margin:0}.scenario{display:block;text-decoration:none;color:var(--ink);min-height:152px;position:relative;transition:background .15s}.scenario:hover{background:var(--mint);border-color:var(--teal)}.scenario .symbol{display:block;font:28px var(--body);margin-bottom:14px}.scenario h3{font-size:18px;margin-bottom:5px}.scenario p{color:var(--muted);font-size:14px;margin:0;padding-right:10px}.scenario .arrow{position:absolute;top:22px;right:22px;color:var(--muted)}.readiness{display:grid;grid-template-columns:110px minmax(0,1fr) auto;align-items:center;gap:24px;background:var(--mint);border-color:#b3d1c7}.readiness strong{font:42px/1 var(--mono)}.readiness h3{margin:0 0 6px}.readiness p{font-size:14px;margin:0}.progress{height:7px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:15px}.progress span{height:100%;display:block;background:var(--teal)}.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:20px}.warning{padding:18px 22px;border-left:4px solid var(--red);background:var(--red-bg);margin:20px 0;border-radius:0 7px 7px 0}.warning h3{color:var(--red);margin-bottom:8px}.warning p:last-child{margin:0}.info{background:var(--mint);border-left-color:var(--teal)}.info h3{color:var(--teal)}.amber{background:var(--amber-bg);border-left-color:var(--amber)}.steps{list-style:none;padding:0;counter-reset:step}.steps li{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);counter-increment:step;align-items:flex-start}.steps li:before{content:counter(step,decimal-leading-zero);font:22px var(--mono);color:var(--teal);width:35px;flex-shrink:0}.steps strong{display:block;margin-bottom:5px}.steps p{margin:0}.checkrow{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-weight:400;align-items:flex-start;cursor:pointer}.checkrow:last-child{border:0}.checkrow strong{display:block;font-weight:600}.checkrow small{display:block;font-weight:400}.checked strong{text-decoration:line-through;color:var(--muted)}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.field small{display:block;margin-top:5px}.field label{margin-bottom:6px}.wide{grid-column:1/-1}.stat{font:36px var(--mono);margin-bottom:7px}.stat small{font:15px var(--body)}.resource-line{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:12px 0}.resource-line:last-child{border:0}.resource-line strong{font-family:var(--mono)}.empty{padding:24px;background:var(--paper);border:1px dashed var(--line);border-radius:7px}.tag{display:inline-block;font:11px var(--mono);padding:5px 8px;border:1px solid var(--line);border-radius:4px;margin:0 5px 5px 0}.timeline{border-left:2px solid var(--line);padding-left:25px}.timeline>div{padding:0 0 25px;position:relative}.timeline>div:before{content:'';position:absolute;left:-31px;top:6px;height:10px;width:10px;border-radius:50%;background:var(--teal)}.timeline h3{margin-bottom:7px}.timeline p{margin:0}.source{font-size:13px;color:var(--muted);margin:20px 0 0}.source a{overflow-wrap:anywhere}details{background:var(--white);border:1px solid var(--line);border-radius:8px;margin:12px 0}summary{padding:18px 22px;font-weight:700;cursor:pointer;min-height:52px}details .detail{padding:0 22px 22px}details .detail p:last-child{margin:0}.phrase{padding:17px 0;border-bottom:1px solid var(--line)}.phrase strong{display:block;font-size:22px}.phrase span{display:block;color:var(--muted)}.phrase small{font-size:15px}.message{font:17px/1.8 var(--mono);background:var(--paper);padding:20px;border-radius:7px;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;font-size:15px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:12px 8px;overflow-wrap:anywhere}.table-wrap{overflow:auto}footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);padding:24px 40px;font:11px var(--mono);color:var(--muted)}footer a{color:var(--muted)}.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);max-width:calc(100% - 30px);padding:16px 24px;background:var(--ink);color:var(--white);border-radius:8px;box-shadow:0 5px 20px #203f4930;z-index:100;font-size:15px}.skip{position:fixed;top:-100px;left:20px;z-index:200;background:white;padding:15px}.skip:focus{top:10px}[hidden]{display:none!important}body.emergency main{font-size:21px}body.emergency .steps{font-size:23px}body.emergency .scenario h3{font-size:23px}body.emergency .scenario{min-height:180px}body.emergency .mode-switch button[aria-pressed=true]{background:var(--red)}.contact-card h3{margin-bottom:6px}.contact-card p{white-space:pre-wrap;overflow-wrap:anywhere}.contact-card a{font-family:var(--mono)}
+@media(min-width:1500px){main{padding-top:60px}.grid{gap:20px}}
+@media(max-width:1100px){.sidebar{width:230px;padding:24px 15px}.workspace{margin-left:230px}main{padding:32px 28px}.hero{grid-template-columns:1fr 220px;gap:22px}.signal{padding:22px}.topbar{padding:0 28px}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.readiness{grid-template-columns:90px 1fr}.readiness .button{grid-column:2}.emergency-strip{align-items:flex-start}}
+@media(max-width:760px){.sidebar{position:relative;width:100%;padding:20px;overflow:visible;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 0 20px}.sidebar-bottom{display:none}.mode-switch{position:absolute;right:18px;top:23px;margin:0;max-width:220px}.search-label{margin-top:8px}#search{margin-bottom:10px}#navigation{display:flex;overflow:auto;gap:6px;padding:4px 0;max-width:100%}.nav-label{display:none}.nav-link{white-space:nowrap;flex-shrink:0;border:1px solid var(--line);font-size:14px;padding:7px 10px}.workspace{margin:0}.topbar{height:auto;min-height:64px;padding:12px 20px;flex-wrap:wrap}.topbar>div{gap:14px}.topbar .quiet{font-size:12px;padding:7px 10px}main{padding:30px 20px 40px}.hero{grid-template-columns:1fr;gap:20px}.signal{display:grid;grid-template-columns:1fr auto;gap:0 20px}.signal strong{grid-column:2;grid-row:1/4;margin:12px 0;font-size:36px}.signal:before{display:none}.signal p{grid-column:1/-1;margin-top:10px}.emergency-strip{display:block;padding:20px}.emergency-strip .button{display:inline-block;margin-top:18px}.grid,.grid.two{grid-template-columns:1fr 1fr;gap:12px}.scenario{padding:19px;min-height:180px}.panel{padding:20px}.form-grid{grid-template-columns:1fr 1fr;gap:15px}.readiness{gap:14px}.section-title{align-items:flex-start}.section-title small{font-size:12px}.section-title h2{font-size:26px}footer{padding:24px 20px}.intro{font-size:17px}body.emergency .grid{grid-template-columns:1fr}.actions .button{flex-grow:1;text-align:center}}
+@media(max-width:440px){.mode-switch{position:static;max-width:none;margin-bottom:14px}.sidebar .brand{margin-bottom:16px}.form-grid{grid-template-columns:1fr}.grid.two{grid-template-columns:1fr}.hero h1{font-size:40px}.readiness{grid-template-columns:75px 1fr}.topbar #breadcrumb{display:none}.topbar>div{width:100%;justify-content:space-between}.grid .scenario p{font-size:13px}.grid .scenario h3{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{body{background:white;color:#000;font-size:12pt}.sidebar,.topbar,footer,.actions,.notice,.skip,.no-print{display:none!important}.workspace{margin:0}main{padding:0;max-width:none;min-height:0}.grid,.grid.two,.hero{display:block}.panel,.signal,.warning{background:white;color:#000;border:1px solid #777;break-inside:avoid;margin:10px 0}.signal p,.signal small{color:#000}h1{font-size:30pt}h2{font-size:20pt}details .detail{display:block}details{break-inside:avoid}a{color:#000}input,textarea{border:1px solid #777}.checkrow input{appearance:none}.checkrow input:after{content:'☐'}.checkrow input:checked:after{content:'☑'}body.emergency main{font-size:12pt}}
+
+/* Mapa vectorial local. No captura el scroll táctil ni requiere librerías. */
+.map-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}.map-toolbar label{margin-left:8px}.map-toolbar select{width:auto;max-width:100%}.map-canvas{overflow:hidden;border:1px solid var(--line);border-radius:8px;background:var(--paper);aspect-ratio:1.36}.map-canvas svg{display:block;width:100%;height:100%}.map-street-labels text{font:10px var(--body);fill:var(--muted);paint-order:stroke;stroke:var(--paper);stroke-width:3;stroke-linejoin:round}.map-poi-label{font:600 14px var(--body);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:4;stroke-linejoin:round}.map-north{font:20px var(--mono);fill:var(--ink)}.map-toolbar button[aria-pressed=true]{background:var(--teal);color:var(--white)}
+@media(max-width:760px){.map-canvas{aspect-ratio:1}.map-toolbar{gap:6px}.map-toolbar button{font-size:14px;padding:9px 12px}.map-canvas .map-poi-label{font-size:17px}}
+@media print{.map-canvas{max-height:180mm;break-inside:avoid}.map-toolbar{display:none}.map-canvas svg{width:100%}}
+
+
+/* Centro de control y accesibilidad avanzada */
+.readiness-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:20px}.readiness-chip{border:1px solid var(--line);padding:12px;border-radius:7px;color:var(--muted)}.readiness-chip b{margin-right:7px}.readiness-chip.done{background:var(--mint);color:var(--ink);border-color:var(--teal)}.inventory-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.inventory-row small{display:block}.tag.expired{color:var(--red);border-color:var(--red);background:var(--red-bg)}.qr-output svg{display:block;max-width:420px;width:100%;height:auto;background:#fff;padding:12px;margin:20px 0}.qr-output path{fill:#000}.high-contrast{--paper:#fff;--white:#fff;--ink:#000;--muted:#222;--line:#444;--teal:#005c4b;--mint:#e5fff8;--red:#850000;--red-bg:#fff0f0}.high-contrast button,.high-contrast input,.high-contrast select,.high-contrast textarea{border-width:2px}.simple-language .source,.simple-language .muted,.simple-language small{display:none}.simple-language .panel{padding:28px}.simple-language main{max-width:950px}html[data-font=large]{font-size:112.5%}html[data-font=xlarge]{font-size:125%}html[data-font=large] body,html[data-font=xlarge] body{font-size:1rem}.print-section-picker{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:760px){.readiness-grid{grid-template-columns:1fr 1fr}.inventory-row{grid-template-columns:1fr auto}.inventory-row button{grid-column:1/-1}.qr-output svg{max-width:100%}}
+@media print{.readiness-grid{grid-template-columns:repeat(4,1fr)}.qr-output svg{max-width:70mm}}
+
+
+/* Navegación progresiva: seis áreas, contexto, favoritos y recientes. */
+.area-nav-link{align-items:flex-start;padding:12px}.area-nav-link>span:last-child{min-width:0}.area-nav-link strong{display:block;color:inherit;font-size:15px}.area-nav-link small{display:block;font-size:11px;line-height:1.35;margin-top:2px;font-weight:400}.all-content-link{display:flex;justify-content:space-between;margin:14px 10px;padding:12px 2px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-decoration:none}.area-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:28px}.area-tile{display:grid;grid-template-columns:38px 1fr;gap:2px 12px;align-items:start;border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-decoration:none;color:var(--ink);background:var(--white)}.area-tile:hover{border-color:var(--teal);background:var(--mint)}.area-tile>span{grid-row:1/3;font-size:25px;color:var(--teal)}.area-tile strong{font-size:17px}.area-tile small{line-height:1.35}.area-hero{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--ink);color:var(--white);border-radius:var(--radius);padding:20px 24px;margin:26px 0}.area-hero>div{display:flex;align-items:center;gap:14px}.area-hero p{margin:0}.area-hero-icon{font-size:32px}.area-featured{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.area-card{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none;min-height:112px}.area-card:hover,.content-row:hover{background:var(--mint);border-color:var(--teal)}.area-card-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--mint);color:var(--teal);font-size:19px;flex:none}.area-card strong,.content-row strong{display:block}.area-card small,.content-row small{display:block;line-height:1.35;margin-top:3px}.area-card-arrow{color:var(--teal);font-size:20px}.content-list,.scenario-list{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}.content-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 8px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}.quick-strip{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}.quick-strip>strong{font-size:13px;margin-right:4px}.quick-strip a{display:inline-block;padding:7px 10px;border:1px solid var(--line);border-radius:20px;text-decoration:none;background:var(--white);font-size:13px}.page-context{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-bottom:14px;flex-wrap:wrap}.page-context a{text-decoration:none}.page-context button{min-height:34px;padding:5px 10px;margin-left:auto;font-size:12px}.related-links{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:36px;padding-top:20px;font-size:13px}.related-links a{padding:7px 10px;background:var(--white);border:1px solid var(--line);border-radius:18px;text-decoration:none}.mobile-tabs,.mobile-sheet{display:none}
+@media(max-width:900px){.area-grid,.area-featured{grid-template-columns:1fr 1fr}.content-list,.scenario-list{grid-template-columns:1fr}}
+@media(max-width:760px){body{padding-bottom:72px}.sidebar #navigation{display:none}.sidebar .search-label,#search{display:block}.area-grid,.area-featured{grid-template-columns:1fr}.area-hero{align-items:flex-start}.area-hero .button{white-space:nowrap}.organized-home{margin-top:24px}.mobile-tabs{position:fixed;display:grid;grid-template-columns:repeat(5,1fr);left:0;right:0;bottom:0;z-index:140;background:var(--white);border-top:1px solid var(--line);padding:6px max(4px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left));box-shadow:0 -8px 22px #203f4914}.mobile-tabs a,.mobile-tabs button{display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;min-height:54px;padding:4px;border:0;background:transparent;color:var(--ink);font-size:11px;text-decoration:none}.mobile-tabs span{font-size:18px;line-height:1.1}.mobile-sheet{display:block;position:fixed;left:12px;right:12px;bottom:76px;z-index:150;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 15px 45px #203f4940}.mobile-sheet[hidden]{display:none}.mobile-sheet-head{display:flex;align-items:center;justify-content:space-between;padding:4px 4px 10px}.mobile-sheet-head button{min-height:40px;padding:5px 12px}.mobile-sheet>a{display:grid;grid-template-columns:32px 1fr;gap:1px 10px;padding:13px 8px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}.mobile-sheet>a>span{grid-row:1/3;font-size:21px}.mobile-sheet>a small{line-height:1.3}.page-context button{margin-left:0}.related-links{align-items:flex-start}.content-row{padding-left:0;padding-right:0}}
+@media(max-width:440px){.area-hero{display:block}.area-hero .button{display:inline-block;margin-top:16px}.area-tile{padding:15px}.mobile-tabs a,.mobile-tabs button{font-size:10px}}
+@media print{.organized-home,.area-hero,.related-links,.mobile-tabs,.mobile-sheet{display:none!important}}
+
+.official-shelter-status{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:14px 16px;margin-bottom:18px;border:1px solid var(--amber);border-radius:8px;background:var(--amber-bg)}.official-shelter-status strong{color:var(--amber)}.official-shelter-status span{font:12px var(--mono);white-space:nowrap}@media(max-width:600px){.official-shelter-status{display:block}.official-shelter-status span{display:block;margin-top:5px}}
+
+
+/* Guías visuales raster: imágenes locales WebP, nunca recursos remotos. */
+.raster-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.raster-guide{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;break-inside:avoid}.raster-guide img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:#f5f0e7}.raster-guide>div{padding:18px}.raster-guide h3{margin:8px 0}.raster-guide p{font-size:14px}.guide-dont{padding-top:11px;border-top:1px solid var(--line);color:var(--red)}.raster-guide-grid.contextual{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.context-raster-guides .raster-guide>div{padding:14px}.context-raster-guides .raster-guide p{font-size:13px}@media(max-width:900px){.raster-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.raster-guide-grid,.raster-guide-grid.contextual{grid-template-columns:1fr}.raster-guide{display:grid;grid-template-columns:120px minmax(0,1fr)}.raster-guide img{height:100%;min-height:150px}.raster-guide>div{padding:14px}}@media print{.raster-guide-grid{grid-template-columns:repeat(2,1fr);gap:8mm}.raster-guide img{max-height:65mm}.raster-guide>div{padding:4mm}.context-raster-guides{display:none!important}}
+
+/* Carteles A4 y etiquetas térmicas */
+.poster-controls{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px}.poster-preview{margin:28px auto 20px;max-width:820px}.poster-preview-label{display:flex;justify-content:space-between;font:12px var(--mono);letter-spacing:1px;color:var(--muted);margin-bottom:8px}.print-poster{--poster-accent:#20695e;background:#fff;color:#111;border:2px solid #111;overflow:hidden;display:grid;grid-template-columns:1fr;grid-template-rows:60% 1fr;width:100%;aspect-ratio:210/297;box-shadow:0 10px 35px #203f4920}.poster-visual{min-width:0;background:#e8efec;display:grid;place-items:center;overflow:hidden;border-bottom:3px solid var(--poster-accent)}.poster-visual img{width:100%;height:100%;object-fit:contain;object-position:center}.poster-copy{padding:3.5% 5% 4%;display:flex;flex-direction:column;min-width:0}.poster-language{padding:0 0 4%;margin:0 0 4%;border-bottom:2px solid #111}.poster-language>span{display:block;font:700 12px var(--mono);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;color:var(--poster-accent)}.poster-language h2{font:900 clamp(24px,3vw,45px)/.98 var(--body);letter-spacing:-1.5px;margin:0 0 14px;text-transform:uppercase}.poster-language p{font-size:clamp(14px,1.45vw,21px);line-height:1.3;margin:0 0 10px}.poster-language strong{font-size:clamp(13px,1.2vw,18px);line-height:1.3}.poster-language:last-of-type{border-bottom:0}.poster-footer{margin-top:auto;border-top:3px solid #111;padding-top:10px;display:flex;justify-content:space-between;gap:14px;font:11px/1.25 var(--mono);color:#111}.poster-red{--poster-accent:#9f2424}.poster-amber{--poster-accent:#78500d}.poster-mono .poster-visual img,.poster-small .poster-visual img,.poster-large .poster-visual img{filter:grayscale(1) contrast(1.6)}.poster-mono{--poster-accent:#000}.poster-columns .poster-copy{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;align-content:start}.poster-columns .poster-language{border:0;margin:0;padding:0}.poster-columns .poster-footer{grid-column:1/-1}.poster-a4h{aspect-ratio:297/210;grid-template-columns:70.7% 1fr;grid-template-rows:1fr}.poster-a4h .poster-visual{border-bottom:0;border-right:3px solid var(--poster-accent)}.poster-a4h .poster-language h2{font-size:clamp(18px,2.4vw,36px)}.poster-a4h .poster-language p{font-size:clamp(12px,1.2vw,17px)}.poster-a4h .poster-language strong{font-size:clamp(11px,1.05vw,15px)}.poster-large{aspect-ratio:101.6/152.4;grid-template-rows:50% 1fr}.poster-large .poster-copy{padding:3mm 4mm}.poster-large .poster-language>span{font-size:clamp(6px,.9vw,10px);margin-bottom:2px}.poster-large .poster-language h2{font-size:clamp(14px,2.6vw,34px);line-height:1;letter-spacing:-.5px;margin-bottom:4px}.poster-large .poster-language p{font-size:clamp(9px,1.5vw,17px);font-weight:700;line-height:1.15;margin:0 0 4px}.poster-large .poster-language strong{font-size:clamp(8px,1.2vw,14px);font-weight:800}.poster-large .poster-footer{padding-top:3px;border-top:1px solid #000;font-size:clamp(6px,.7vw,9px)}.poster-small{grid-template-columns:39% 61%;box-shadow:0 5px 20px #203f4920}.poster-small .poster-visual{border-bottom:0;border-right:2px solid var(--poster-accent)}.poster-small .poster-copy{padding:4%}.poster-small .poster-language{border:0;margin:0;padding:0}.poster-small .poster-language>span{font-size:clamp(6px,.9vw,10px);margin-bottom:2px;color:#000}.poster-small .poster-language h2{font-size:clamp(12px,2.4vw,26px);line-height:.95;letter-spacing:-.5px;margin-bottom:4px}.poster-small .poster-language p{font-size:clamp(8px,1.25vw,13px);font-weight:700;line-height:1.05;margin:0}.poster-small .poster-language strong{display:none}.poster-small .poster-footer{padding-top:3px;border-top:1px solid #000;font-size:clamp(5px,.7vw,8px)}.poster-small .poster-footer span{display:none}.poster-tiny .poster-footer{display:none}#poster-print-root[data-mode=all] .print-poster{margin-bottom:24px}
+@media(max-width:760px){.poster-controls{grid-template-columns:1fr}.print-poster{grid-template-columns:1fr;grid-template-rows:auto 1fr;aspect-ratio:auto}.poster-a4 .poster-visual,.poster-large .poster-visual{aspect-ratio:1.45}.poster-a4h{grid-template-columns:1fr;grid-template-rows:auto 1fr}.poster-a4h .poster-visual{aspect-ratio:1.6;border-right:0;border-bottom:3px solid var(--poster-accent)}.poster-columns .poster-copy{grid-template-columns:1fr}.poster-copy{padding:24px}.poster-language h2{font-size:28px}.poster-language p{font-size:16px}.poster-small{grid-template-columns:39% 61%}.poster-small .poster-visual{aspect-ratio:auto}.poster-small .poster-copy{padding:4%}.poster-small .poster-language h2{font-size:clamp(12px,4.2vw,18px)}.poster-small .poster-language p{font-size:clamp(8px,2.4vw,11px)}}
+@media print{body.poster-printing{padding-bottom:0!important}body.poster-printing .sidebar,body.poster-printing .topbar,body.poster-printing .workspace>footer,body.poster-printing #main>*:not(.poster-preview),body.poster-printing .poster-preview>.poster-preview-label{display:none!important}body.poster-printing .workspace,body.poster-printing main{margin:0!important;padding:0!important;width:auto!important;max-width:none!important}body.poster-printing .poster-preview{margin:0!important;max-width:none!important}body.poster-printing #poster-print-root{display:block!important}body.poster-printing .print-poster{box-shadow:none;border:0;break-after:page;page-break-after:always}body.poster-printing .print-poster:last-child{break-after:auto;page-break-after:auto}body.poster-printing .poster-copy{padding:6mm}body.poster-printing .poster-language h2{font-size:28pt}body.poster-printing .poster-language p{font-size:13pt}body.poster-printing .poster-language strong{font-size:11pt}body.poster-printing .print-poster:not(.poster-tiny) .poster-footer{display:flex!important}body.poster-printing .poster-tiny .poster-footer{display:none!important}body.poster-printing .poster-a4h .poster-language h2{font-size:20pt}body.poster-printing .poster-a4h .poster-language p{font-size:11pt}body.poster-printing .poster-a4h .poster-language strong{font-size:9.5pt}body.poster-printing .poster-a4.poster-columns .poster-copy{padding:5mm 6mm;gap:6mm}body.poster-printing .poster-a4.poster-columns .poster-language h2{font-size:24pt}body.poster-printing .poster-a4.poster-columns .poster-language p{font-size:12pt}body.poster-printing .poster-a4.poster-columns .poster-language strong{font-size:11pt}body.poster-printing .poster-large .poster-copy{padding:3mm;gap:3mm}body.poster-printing .poster-large .poster-language>span{font-size:8pt}body.poster-printing .poster-large .poster-language h2{font-size:18pt}body.poster-printing .poster-large .poster-language p{font-size:12pt;font-weight:700}body.poster-printing .poster-large .poster-language strong{font-size:12pt;font-weight:800}body.poster-printing .poster-large .poster-footer{font-size:7pt}body.poster-printing .poster-small{grid-template-columns:39% 61%}body.poster-printing .poster-small .poster-copy{padding:1.5mm}body.poster-printing .poster-small .poster-language>span{font-size:var(--ps-span,7pt);margin-bottom:1mm}body.poster-printing .poster-small .poster-language h2{font-size:var(--ps-title,13pt);margin-bottom:1mm}body.poster-printing .poster-small .poster-language p{font-size:var(--ps-p,8.5pt);font-weight:700}body.poster-printing .poster-small .poster-footer{font-size:var(--ps-foot,6pt);padding-top:.7mm}}
+
+/* Language Selector & Profile Styling */
+.lang-picker{display:flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:2px}
+.lang-btn{font-size:12px;font-weight:700;padding:4px 8px;border:0;background:transparent;border-radius:4px;min-height:32px;cursor:pointer}
+.lang-btn[aria-pressed=true]{background:var(--teal);color:var(--white)}
+.profile-badge{display:inline-flex;align-items:center;gap:6px;font:12px var(--mono);background:var(--mint);color:var(--teal);padding:4px 8px;border-radius:4px;border:1px solid #b3d1c7}
+</style>
+  
+  
+  
+</head>
+<body>
+  <div class="sidebar">
+    <a href="#inicio" class="brand">
+      <div class="brand-icon">⛨</div>
+      <div>
+        <strong>OpenRefugio</strong>
+        <small>OFFLINE FIRST</small>
+      </div>
+    </a>
+
+    <nav id="navigation" aria-label="Navegación principal"></nav>
+
+    <div class="sidebar-bottom">
+      <div><span class="local-dot"></span>Almacén local activo</div>
+      <small>Cero telemetría · Cero servidores</small>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <header class="topbar" id="topbar"></header>
+    <main id="main" role="main"></main>
+    <footer>
+      <div>OpenRefugio · Kit Cívico de Emergencias Abierto · Licencia MIT</div>
+      <div><a href="https://github.com/zaswear/open-refugio" target="_blank" rel="noopener">GitHub</a></div>
+    </footer>
+  </div>
+
+  
+  
+  
+  
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+
+    <script>'use strict';
+
+/**
+ * OpenRefugio i18n Engine
+ * Minimal, zero-dependency translation system supporting Spanish (es), English (en), and Dutch (nl).
+ */
+window.OpenRefugioI18n = (function() {
+  const STORAGE_KEY = 'openrefugio:lang:v1';
+  const SUPPORTED = ['es', 'en', 'nl'];
+  let currentLang = 'es';
+
+  const translations = {
+    es: {
+      appName: 'OpenRefugio',
+      appSubtitle: 'Kit Personal y Familiar de Emergencias Offline',
+      langName: 'Español',
+      offlineBadge: '100% Offline · Cero servidores',
+      switchLanguage: 'Idioma',
+      
+      // Nav
+      navHome: 'Inicio',
+      nav10min: 'Primeros 10 min',
+      navSim: 'Simulador',
+      navPrep: 'Mi preparación',
+      navWaterFood: 'Agua y comida',
+      navEnergy: 'Cocinar y energía',
+      navFirstAid: 'Primeros auxilios',
+      navComms: 'Comunicaciones',
+      navNetwork: 'Familia y red',
+      navEvac: 'Evacuación',
+      navTools: 'Herramientas',
+      navVisual: 'Guías visuales',
+      navPosters: 'Carteles y etiquetas',
+      navBackup: 'Copias y fuentes',
+
+      // Actions / Status
+      emergencyMode: 'Modo Emergencia',
+      normalMode: 'Modo Normal',
+      emergencyActive: 'Emergencia activa',
+      searchPlaceholder: 'Buscar en guías, fichas y suministros...',
+      allReady: 'Completado',
+      pending: 'Pendiente',
+      reviewed: 'Revisado',
+      exportJson: 'Exportar copia JSON',
+      importJson: 'Importar copia JSON',
+      generateQr: 'Generar QR de emergencia',
+      readQr: 'Escanear QR',
+      downloadPortable: 'Descargar versión portable (.html)',
+
+      // Profile Setup
+      profileTitle: 'Perfil del Hogar y Región',
+      profileDesc: 'Configura las personas, animales y servicios de emergencia de tu entorno.',
+      adults: 'Adultos',
+      minors: 'Menores',
+      dependents: 'Personas dependientes',
+      pets: 'Animales de compañía / Mascotas',
+      petTypeNone: 'Sin mascotas',
+      petTypeDog: 'Perro(s)',
+      petTypeCat: 'Gato(s)',
+      petTypeOther: 'Otras mascotas',
+      regionPreset: 'Región / País (Preajuste de emergencias)',
+      presetUniversal: 'Internacional / General (112 / 911)',
+      presetSpain: 'España (112, 091, 061)',
+      presetNetherlands: 'Países Bajos (112, 0900-8844, 0800-9009)',
+      presetCustom: 'Personalizado',
+      emergencyPhone: 'Teléfono de emergencias principal',
+      policePhone: 'Policía sin urgencia',
+      utilityPhone: 'Averías gas / luz / agua',
+      emergencyRadio: 'Frecuencia de radio de emergencia (FM)',
+      saveProfile: 'Guardar perfil',
+      profileSaved: 'Perfil actualizado correctamente.',
+
+      // Scenarios
+      scenariosTitle: 'Situaciones de Emergencia',
+      scenarioApagon: 'Apagón prolongado',
+      scenarioApagonDesc: 'Corte de suministro eléctrico, frío, iluminación y baterías.',
+      scenarioAgua: 'Corte o contaminación de agua',
+      scenarioAguaDesc: 'Sin agua corriente en el grifo o aviso de no potabilidad.',
+      scenarioInternet: 'Caída de telecomunicaciones',
+      scenarioInternetDesc: 'Sin cobertura móvil ni internet: radio FM y puntos de encuentro.',
+      scenarioFuego: 'Fuego o humo',
+      scenarioFuegoDesc: 'Evacuación de vivienda o refugio ante humo exterior.',
+      scenarioGas: 'Olor o fuga de gas',
+      scenarioGasDesc: 'Ventilación inmediata, no tocar interruptores y aviso desde el exterior.',
+      scenarioToxico: 'Nube química o radiación',
+      scenarioToxicoDesc: 'Refugio hermético interior, ventilación apagada y descontaminación.',
+      scenarioInundacion: 'Inundación',
+      scenarioInundacionDesc: 'Subir a planta alta o evacuar antes de la llegada del agua.',
+      scenarioClima: 'Clima extremo',
+      scenarioClimaDesc: 'Tormenta severa, ola de frío polar o calor extremo.',
+      scenarioAlimentos: 'Desabastecimiento alimentario',
+      scenarioAlimentosDesc: 'Organización de despensa duradera sin cocción.',
+
+      // Simulator
+      simulatorTitle: 'Simulador de Autonomía de Reservas',
+      simDays: 'Días de planificación',
+      waterCalcTitle: 'Agua potable estimada',
+      foodCalcTitle: 'Raciones de comida estimadas',
+      cashCalcTitle: 'Efectivo recomendado en billetes pequeños',
+      waterFormulaNote: 'Basado en recomendación internacional de 3 L por persona/día + reserva de mascotas.',
+      foodFormulaNote: 'Basado en 3 raciones diarias no perecederas por persona.',
+
+      // Tools
+      toolsTitle: 'Herramientas de Emergencia Offline',
+      metronomeTitle: 'Ritmo de compresiones RCP (110 bpm)',
+      metronomeStart: 'Iniciar metrónomo sonoro',
+      metronomeStop: 'Detener',
+      burnTimerTitle: 'Temporizador para enfriar quemadura',
+      burnStart: 'Iniciar enfriamiento con agua limpia (15 min)',
+      flashlightTitle: 'Pantalla como linterna',
+      flashlightWhite: 'Luz blanca',
+      flashlightWarm: 'Luz cálida (modo noche)',
+
+      // MUNBYN / Posters
+      postersTitle: 'Carteles y Etiquetas Térmicas Imprimibles',
+      postersDesc: 'Genera carteles de emergencia en A4 o etiquetas adhesivas para rollos térmicos tipo MUNBYN.',
+      printNow: 'Imprimir',
+
+      // Disclaimer
+      disclaimerText: 'Información civil y sanitaria basada en recomendaciones oficiales de la Cruz Roja, Protección Civil y ministerios de salud. No sustituye el criterio médico ni las instrucciones de los servicios de emergencia.'
+    },
+
+    en: {
+      appName: 'OpenRefugio',
+      appSubtitle: 'Personal & Household Offline Emergency Kit',
+      langName: 'English',
+      offlineBadge: '100% Offline · Zero servers',
+      switchLanguage: 'Language',
+
+      // Nav
+      navHome: 'Home',
+      nav10min: 'First 10 mins',
+      navSim: 'Simulator',
+      navPrep: 'Preparedness',
+      navWaterFood: 'Water & Food',
+      navEnergy: 'Energy & Cooking',
+      navFirstAid: 'First Aid',
+      navComms: 'Communications',
+      navNetwork: 'Family & Network',
+      navEvac: 'Evacuation',
+      navTools: 'Tools',
+      navVisual: 'Visual Guides',
+      navPosters: 'Posters & Labels',
+      navBackup: 'Backups & Sources',
+
+      // Actions / Status
+      emergencyMode: 'Emergency Mode',
+      normalMode: 'Normal Mode',
+      emergencyActive: 'Emergency active',
+      searchPlaceholder: 'Search guides, supplies and scenarios...',
+      allReady: 'Completed',
+      pending: 'Pending',
+      reviewed: 'Reviewed',
+      exportJson: 'Export JSON backup',
+      importJson: 'Import JSON backup',
+      generateQr: 'Generate Emergency QR',
+      readQr: 'Scan QR Code',
+      downloadPortable: 'Download portable edition (.html)',
+
+      // Profile Setup
+      profileTitle: 'Household & Regional Profile',
+      profileDesc: 'Set up members, companion animals, and local emergency response channels.',
+      adults: 'Adults',
+      minors: 'Children',
+      dependents: 'Dependent persons',
+      pets: 'Companion animals / Pets',
+      petTypeNone: 'No pets',
+      petTypeDog: 'Dog(s)',
+      petTypeCat: 'Cat(s)',
+      petTypeOther: 'Other pets',
+      regionPreset: 'Region / Country (Emergency preset)',
+      presetUniversal: 'International / General (112 / 911)',
+      presetSpain: 'Spain (112, 091, 061)',
+      presetNetherlands: 'Netherlands (112, 0900-8844, 0800-9009)',
+      presetCustom: 'Custom',
+      emergencyPhone: 'Primary emergency number',
+      policePhone: 'Non-urgent police',
+      utilityPhone: 'Gas / Power / Water breakdown',
+      emergencyRadio: 'Emergency radio frequency (FM)',
+      saveProfile: 'Save profile',
+      profileSaved: 'Profile saved successfully.',
+
+      // Scenarios
+      scenariosTitle: 'Emergency Scenarios',
+      scenarioApagon: 'Prolonged Blackout',
+      scenarioApagonDesc: 'Power outage, cold weather, lighting and battery conservation.',
+      scenarioAgua: 'Water Disruption / Contamination',
+      scenarioAguaDesc: 'No tap water or boil-water notice issued by authorities.',
+      scenarioInternet: 'Telecoms / Internet Outage',
+      scenarioInternetDesc: 'Zero cellular network: switch to FM radio and physical rendezvous points.',
+      scenarioFuego: 'Fire or Heavy Smoke',
+      scenarioFuegoDesc: 'Immediate building evacuation or sealing windows against toxic smoke.',
+      scenarioGas: 'Gas Smell or Leak',
+      scenarioGasDesc: 'Immediate ventilation, do not touch light switches, report from outside.',
+      scenarioToxico: 'Toxic Cloud or Hazmat',
+      scenarioToxicoDesc: 'Shelter-in-place, switch off air ventilation, decontaminate upon exposure.',
+      scenarioInundacion: 'Flooding',
+      scenarioInundacionDesc: 'Vertical evacuation to top floors or early departure before water rises.',
+      scenarioClima: 'Extreme Weather',
+      scenarioClimaDesc: 'Severe storm, polar freeze, or extreme heatwave.',
+      scenarioAlimentos: 'Food Supply Scarcity',
+      scenarioAlimentosDesc: 'Managing long-lasting shelf-stable pantry items without cooking.',
+
+      // Simulator
+      simulatorTitle: 'Resource Autonomy Simulator',
+      simDays: 'Planning timeframe (days)',
+      waterCalcTitle: 'Estimated drinking water',
+      foodCalcTitle: 'Estimated food rations',
+      cashCalcTitle: 'Recommended small-bill emergency cash',
+      waterFormulaNote: 'Based on standard 3 L per person/day guidance + animal hydration reserves.',
+      foodFormulaNote: 'Based on 3 ready-to-eat shelf-stable meals per person/day.',
+
+      // Tools
+      toolsTitle: 'Offline Emergency Utilities',
+      metronomeTitle: 'CPR Chest Compression Metronome (110 bpm)',
+      metronomeStart: 'Start audible metronome',
+      metronomeStop: 'Stop',
+      burnTimerTitle: 'Burn Cooling Countdown',
+      burnStart: 'Start 15-min clean water cool-down',
+      flashlightTitle: 'Screen Flashlight',
+      flashlightWhite: 'White light',
+      flashlightWarm: 'Warm light (night vision)',
+
+      // MUNBYN / Posters
+      postersTitle: 'Printable Posters & Thermal Labels',
+      postersDesc: 'Generate printable A4 emergency notices or adhesive roll labels for MUNBYN thermal printers.',
+      printNow: 'Print',
+
+      // Disclaimer
+      disclaimerText: 'Civic and first-aid guidelines derived from Red Cross, civil protection, and public health agencies. Does not replace professional medical advice or orders from emergency services.'
+    },
+
+    nl: {
+      appName: 'OpenRefugio',
+      appSubtitle: 'Persoonlijke en Huishoudelijke Noodkit Offline',
+      langName: 'Nederlands',
+      offlineBadge: '100% Offline · Geen externe servers',
+      switchLanguage: 'Taal',
+
+      // Nav
+      navHome: 'Start',
+      nav10min: 'Eerste 10 min',
+      navSim: 'Simulator',
+      navPrep: 'Voorbereiding',
+      navWaterFood: 'Water en voeding',
+      navEnergy: 'Koken en energie',
+      navFirstAid: 'Eerste hulp',
+      navComms: 'Communicatie',
+      navNetwork: 'Familie en netwerk',
+      navEvac: 'Evacuatie',
+      navTools: 'Gereedschap',
+      navVisual: 'Visuele gidsen',
+      navPosters: 'Posters en labels',
+      navBackup: 'Back-up en bronnen',
+
+      // Actions / Status
+      emergencyMode: 'Noodmodus',
+      normalMode: 'Normale modus',
+      emergencyActive: 'Noodgeval actief',
+      searchPlaceholder: 'Zoeken in gidsen, situaties en voorraden...',
+      allReady: 'Gereed',
+      pending: 'In behandeling',
+      reviewed: 'Gecontroleerd',
+      exportJson: 'Exporteer JSON back-up',
+      importJson: 'Importeer JSON back-up',
+      generateQr: 'Genereer Nood-QR',
+      readQr: 'Scan QR-code',
+      downloadPortable: 'Download portable versie (.html)',
+
+      // Profile Setup
+      profileTitle: 'Huishoudelijk en Regionaal Profiel',
+      profileDesc: 'Configureer gezinsleden, huisdieren en lokale noodnummers van jouw regio.',
+      adults: 'Volwassenen',
+      minors: 'Kinderen',
+      dependents: 'Zorgbehoevende personen',
+      pets: 'Huisdieren',
+      petTypeNone: 'Geen huisdieren',
+      petTypeDog: 'Hond(en)',
+      petTypeCat: 'Kat(ten)',
+      petTypeOther: 'Andere dieren',
+      regionPreset: 'Regio / Land (Noodvoorinstelling)',
+      presetUniversal: 'Internationaal / Algemeen (112 / 911)',
+      presetSpain: 'Spanje (112, 091, 061)',
+      presetNetherlands: 'Nederland (112, 0900-8844, 0800-9009)',
+      presetCustom: 'Aangepast',
+      emergencyPhone: 'Primair alarmnummer',
+      policePhone: 'Politie (geen spoed)',
+      utilityPhone: 'Storingsdienst gas / elektra / water',
+      emergencyRadio: 'Noodradio frequentie (FM)',
+      saveProfile: 'Profiel opslaan',
+      profileSaved: 'Profiel succesvol bijgewerkt.',
+
+      // Scenarios
+      scenariosTitle: 'Noodsituaties',
+      scenarioApagon: 'Langdurige stroomuitval',
+      scenarioApagonDesc: 'Elektriciteitsuitval, koude, verlichting en spaarzaam omgaan met batterijen.',
+      scenarioAgua: 'Drinkwateruitval of vervuiling',
+      scenarioAguaDesc: 'Geen leidingwater of officieel kookadvies.',
+      scenarioInternet: 'Uitval van telecom en internet',
+      scenarioInternetDesc: 'Geen mobiel netwerk: schakel over op FM-radio en fysieke verzamelpunten.',
+      scenarioFuego: 'Brand of dichte rook',
+      scenarioFuegoDesc: 'Onmiddellijk evacueren of ramen en ventilatie sluiten bij rook van buiten.',
+      scenarioGas: 'Gaslucht of gaslek',
+      scenarioGasDesc: 'Direct ventileren, geen schakelaars aanraken en buiten 112 bellen.',
+      scenarioToxico: 'Giftige wolk of straling',
+      scenarioToxicoDesc: 'Binnen schuilen, mechanische ventilatie uitschakelen en decontamineren.',
+      scenarioInundacion: 'Overstroming',
+      scenarioInundacionDesc: 'Naar hogere verdiepingen gaan of tijdig vertrekken voordat het water stijgt.',
+      scenarioClima: 'Extreem weer',
+      scenarioClimaDesc: 'Hevige storm, strenge vorst of extreme hittegolf.',
+      scenarioAlimentos: 'Voedseltekort',
+      scenarioAlimentosDesc: 'Voorraadbeheer van lang houdbare voeding die niet verwarmd hoeft te worden.',
+
+      // Simulator
+      simulatorTitle: 'Zelfredzaamheid Simulator',
+      simDays: 'Planningstermijn (dagen)',
+      waterCalcTitle: 'Geschat drinkwater',
+      foodCalcTitle: 'Geschatte porties voedsel',
+      cashCalcTitle: 'Aanbevolen contant geld in kleine coupures',
+      waterFormulaNote: 'Gebaseerd op 3 liter per persoon per dag + reserve voor huisdieren.',
+      foodFormulaNote: 'Gebaseerd op 3 houdbare maaltijden per persoon per dag.',
+
+      // Tools
+      toolsTitle: 'Offline Noodgereedschap',
+      metronomeTitle: 'Reanimatie Metronoom (110 bpm)',
+      metronomeStart: 'Start geluidsmetronoom',
+      metronomeStop: 'Stop',
+      burnTimerTitle: 'Brandwonden Koeltimer',
+      burnStart: 'Start 15 min koelen met lauw zacht stromend water',
+      flashlightTitle: 'Scherm als zaklamp',
+      flashlightWhite: 'Wit licht',
+      flashlightWarm: 'Warm licht (nachtmodus)',
+
+      // MUNBYN / Posters
+      postersTitle: 'Afdrukbare Posters en Thermische Labels',
+      postersDesc: 'Maak A4 noodposters of zelfklevende etiketten voor MUNBYN thermische printers.',
+      printNow: 'Afdrukken',
+
+      // Disclaimer
+      disclaimerText: 'Informatie samengesteld op basis van adviezen van Rode Kruis, Veiligheidsregio en overheid. Vervangt geen medisch advies of directe bevelen van hulpdiensten.'
+    }
+  };
+
+  function init() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && SUPPORTED.includes(saved)) {
+        currentLang = saved;
+      } else {
+        const browserLang = (navigator.language || 'es').slice(0, 2).toLowerCase();
+        if (SUPPORTED.includes(browserLang)) {
+          currentLang = browserLang;
+        }
+      }
+    } catch (e) {
+      currentLang = 'es';
+    }
+    document.documentElement.lang = currentLang;
+  }
+
+  function t(key) {
+    const dict = translations[currentLang] || translations.es;
+    return dict[key] || translations.es[key] || key;
+  }
+
+  function setLanguage(lang) {
+    if (!SUPPORTED.includes(lang)) return;
+    currentLang = lang;
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch (e) {}
+    document.documentElement.lang = lang;
+    window.dispatchEvent(new CustomEvent('openrefugio:langchange', { detail: { lang } }));
+  }
+
+  function getLanguage() {
+    return currentLang;
+  }
+
+  function getSupported() {
+    return [...SUPPORTED];
+  }
+
+  init();
+
+  return {
+    t,
+    setLanguage,
+    getLanguage,
+    getSupported,
+    translations
+  };
+})();
+</script>
+    <script>'use strict';
+
+/**
+ * OpenRefugio Household & Regional Profile Manager
+ * Manages dynamically configurable household members, companion animals, and local emergency channels.
+ */
+window.OpenRefugioProfile = (function() {
+  const STORAGE_KEY = 'openrefugio:profile:v1';
+
+  const PRESETS = {
+    universal: {
+      emergency: '112 / 911',
+      police: 'Local Police',
+      utility: 'Local Utility Service',
+      radio: 'National Public Radio (FM)'
+    },
+    spain: {
+      emergency: '112',
+      police: '091 (Policía Nacional) / 062 (Guardia Civil)',
+      utility: '061 (Urgencias Sanitarias) / Teléfono Averías Local',
+      radio: 'Radio Nacional de España (RNE) 5 / RNE 1'
+    },
+    netherlands: {
+      emergency: '112',
+      police: '0900-8844 (Geen spoed)',
+      utility: '0800-9009 (Nationaal Storingsnummer Gas & Stroom)',
+      radio: 'Regionale Rampenzender (bv. Radio M 93.1 FM / NPO Radio 1)'
+    },
+    custom: {
+      emergency: '',
+      police: '',
+      utility: '',
+      radio: ''
+    }
+  };
+
+  const DEFAULT_PROFILE = {
+    adults: 1,
+    minors: 0,
+    dependents: 0,
+    petType: 'none', // 'none' | 'dog' | 'cat' | 'other'
+    petCount: 0,
+    petWaterLitersPerDay: 0.5,
+    petFoodGramsPerDay: 100,
+    regionPreset: 'universal',
+    emergencyPhone: '112 / 911',
+    policePhone: 'Local Police',
+    utilityPhone: 'Local Utility Service',
+    emergencyRadio: 'Local Emergency FM Radio',
+    rendezvousPrimary: '',
+    rendezvousSecondary: '',
+    outOfAreaContact: ''
+  };
+
+  let state = { ...DEFAULT_PROFILE };
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        state = { ...DEFAULT_PROFILE, ...parsed };
+      }
+    } catch (e) {
+      console.warn('Could not read OpenRefugio profile, using defaults:', e);
+      state = { ...DEFAULT_PROFILE };
+    }
+    return state;
+  }
+
+  function save(newProfile) {
+    state = { ...state, ...newProfile };
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      window.dispatchEvent(new CustomEvent('openrefugio:profilechange', { detail: state }));
+    } catch (e) {
+      console.error('Failed to persist OpenRefugio profile:', e);
+    }
+    return state;
+  }
+
+  function applyPreset(presetKey) {
+    const p = PRESETS[presetKey] || PRESETS.universal;
+    return save({
+      regionPreset: presetKey,
+      emergencyPhone: p.emergency,
+      policePhone: p.police,
+      utilityPhone: p.utility,
+      emergencyRadio: p.radio
+    });
+  }
+
+  function get() {
+    return { ...state };
+  }
+
+  function getPresets() {
+    return { ...PRESETS };
+  }
+
+  load();
+
+  return {
+    get,
+    save,
+    applyPreset,
+    getPresets,
+    load
+  };
+})();
+</script>
+    <script>'use strict';
+
+/**
+ * OpenRefugio Core Preparedness Guidelines and Civic References
+ * Formulated according to international guidelines from Red Cross, WHO, and civil defense agencies.
+ */
+window.OpenRefugioContent = {
+  reviewed: '2026-09-19',
+  sources: {
+    redcross: ['International Federation of Red Cross and Red Crescent Societies (IFRC)', 'https://www.ifrc.org'],
+    who: ['World Health Organization (WHO) · Emergency Preparedness', 'https://www.who.int/emergencies'],
+    denkvooruit: ['Denk Vooruit · Emergency kit & household resilience (NL)', 'https://www.denkvooruit.nl'],
+    proteccioncivil: ['Protección Civil y Emergencias (ES)', 'https://www.proteccioncivil.es'],
+    fema: ['Ready.gov · Plan Ahead for Disasters (US)', 'https://www.ready.gov']
+  },
+
+  scenarios: {
+    apagon: {
+      id: 'apagon',
+      icon: '⚡',
+      steps: [
+        {
+          title: { es: 'Comprobar peligros inmediatos', en: 'Check immediate hazards', nl: 'Controleer direct gevaar' },
+          detail: {
+            es: 'Si hay humo, olor a gas o salta la alarma de monóxido de carbono, sal de la vivienda y llama al 112 desde el exterior. No enciendas velas.',
+            en: 'If you smell gas, see smoke, or a CO alarm triggers, evacuate immediately and call 112/911 from outside. Avoid candles.',
+            nl: 'Bij rook, gaslucht of CO-alarm direct het pand verlaten en buiten 112 bellen. Gebruik geen kaarsen.'
+          }
+        },
+        {
+          title: { es: 'Iluminación y baterías', en: 'Lighting & battery conservation', nl: 'Verlichting en batterijbesparing' },
+          detail: {
+            es: 'Enciende linternas frontales o de mano. Pon los teléfonos en modo de ultra-ahorro de batería o apágalos para encenderlos sólo a horas acordadas.',
+            en: 'Use headlamps or flashlights. Switch smartphones to extreme battery saver mode or schedule fixed check-in times.',
+            nl: 'Zet zaklampen aan. Schakel smartphones naar ultra-energiebesparing of schakel ze uit en spreek vaste contacttijden af.'
+          }
+        },
+        {
+          title: { es: 'Preservar frío de alimentos', en: 'Preserve refrigerator coolness', nl: 'Behoud koelkastkoude' },
+          detail: {
+            es: 'Mantén las puertas del frigorífico y congelador herméticamente cerradas. Un congelador lleno aguanta hasta 48 horas si no se abre.',
+            en: 'Keep fridge and freezer doors strictly closed. A full freezer can preserve cold for up to 48 hours unopened.',
+            nl: 'Houd koelkast en vriezer dicht. Een volle vriezer blijft tot 48 uur bevroren als hij gesloten blijft.'
+          }
+        },
+        {
+          title: { es: 'Sintonizar información oficial', en: 'Tune into official broadcast', nl: 'Stem af op noodzender' },
+          detail: {
+            es: 'Usa la radio a pilas o dinamo para sintonizar la emisora pública de emergencias designada para tu región.',
+            en: 'Use a battery-operated or crank radio to tune into your national or regional emergency broadcast station.',
+            nl: 'Gebruik een batterij- of opwindradio om af te stemmen op de regionale rampenzender.'
+          }
+        }
+      ]
+    },
+
+    agua: {
+      id: 'agua',
+      icon: '💧',
+      steps: [
+        {
+          title: { es: 'Identificar el tipo de corte', en: 'Identify the nature of disruption', nl: 'Identificeer de aard van de uitval' },
+          detail: {
+            es: 'Distingue entre un corte físico de presión y un aviso de contaminación química/bacteriológica (aviso de hervir agua).',
+            en: 'Distinguish between a complete physical shut-off and a boil-water or chemical contamination notice.',
+            nl: 'Maak onderscheid tussen totale uitval en een kookadvies wegens mogelijke verontreiniging.'
+          }
+        },
+        {
+          title: { es: 'Contabilizar reservas potables', en: 'Audit drinking water reserves', nl: 'Tel drinkwatervoorraad' },
+          detail: {
+            es: 'Separa físicamente el agua embotellada de beber (mínimo 3 L/persona/día) del agua destinada a higiene o cisterna.',
+            en: 'Strictly segregate certified drinking water (min 3 L/person/day) from grey water used for hygiene or flushing.',
+            nl: 'Scheid flessenwater voor consumptie (min 3L/persoon/dag) van water voor toilet of schoonmaak.'
+          }
+        },
+        {
+          title: { es: 'Racionamiento inteligente', en: 'Smart water budgeting', nl: 'Slim water rantsoeneren' },
+          detail: {
+            es: 'Prioriza personas vulnerables y animales de compañía. Emplea toallitas y desinfectante de manos para evitar gastar agua potable.',
+            en: 'Prioritize hydration of vulnerable individuals and companion animals. Use alcohol wipes for hand hygiene to conserve water.',
+            nl: 'Geef voorrang aan kwetsbare personen en huisdieren. Gebruik desinfectiedoekjes om drinkwater te sparen.'
+          }
+        }
+      ]
+    },
+
+    fuego: {
+      id: 'fuego',
+      icon: '🔥',
+      steps: [
+        {
+          title: { es: 'Fuego dentro: Salir inmediatamente', en: 'Indoor fire: Evacuate immediately', nl: 'Binnenbrand: Direct naar buiten' },
+          detail: {
+            es: 'Alerta a todos a viva voz, evacúa gateando por debajo de la capa de humo, cierra puertas tras de ti y llama al 112 desde la calle.',
+            en: 'Yell to alert everyone, crawl low beneath smoke layers, close doors behind you to slow spread, and dial emergency services outside.',
+            nl: 'Waarschuw iedereen luidkeels, blijf laag onder de rook, sluit deuren achter je en bel buiten 112.'
+          }
+        },
+        {
+          title: { es: 'Humo o fuego exterior: Confinamiento', en: 'Exterior fire/smoke: Shelter in place', nl: 'Rook van buiten: Binnen schuilen' },
+          detail: {
+            es: 'Entra en el edificio, cierra todas las ventanas, apaga la climatización o ventilación mecánica y tapa rendijas con paños húmedos.',
+            en: 'Head indoors, shut all windows/doors, shut down HVAC/mechanical ventilation, and seal door gaps with damp cloths.',
+            nl: 'Ga naar binnen, sluit ramen en deuren, schakel mechanische ventilatie uit en dicht kieren met vochtige doeken.'
+          }
+        }
+      ]
+    },
+
+    gas: {
+      id: 'gas',
+      icon: '⚠️',
+      steps: [
+        {
+          title: { es: 'Cero chispas ni interruptores', en: 'Zero sparks or electric switches', nl: 'Geen vonken of schakelaars' },
+          detail: {
+            es: 'No toques interruptores de luz, timbres, extractores ni uses el teléfono dentro de la zona con olor a gas.',
+            en: 'Do not touch light switches, doorbells, fans, or mobile phones inside an area with gas odor. Any spark can ignite vapor.',
+            nl: 'Raak geen lichtschakelaars, deurbellen of telefoons aan in een ruimte met gaslucht. Een vonk kan een explosie veroorzaken.'
+          }
+        },
+        {
+          title: { es: 'Ventilar y cortar llave de paso', en: 'Ventilate & close main gas valve', nl: 'Ventileren en hoofdkraan sluiten' },
+          detail: {
+            es: 'Abre puertas y ventanas a la calle, cierra la llave general de gas del contador si puedes hacerlo con seguridad, y sal al exterior.',
+            en: 'Open exterior doors/windows wide, close the main gas shutoff valve at your meter if safe, and evacuate.',
+            nl: 'Zet ramen en deuren wijd open, sluit de hoofdgaskraan bij de meter indien veilig, en ga naar buiten.'
+          }
+        },
+        {
+          title: { es: 'Avisar desde fuera', en: 'Alert authorities from outside', nl: 'Bel hulpdiensten van buiten' },
+          detail: {
+            es: 'Llama al teléfono nacional de averías de gas o al 112 situado a una distancia prudente.',
+            en: 'Call your national gas emergency hotline or 112/911 once safely outside and away from the building.',
+            nl: 'Bel het nationale storingsnummer of 112 zodra je veilig op afstand buiten staat.'
+          }
+        }
+      ]
+    },
+
+    toxico: {
+      id: 'toxico',
+      icon: '☣️',
+      steps: [
+        {
+          title: { es: 'Refugiarse en habitación interior', en: 'Shelter in interior room', nl: 'Schuilen in binnenruimte' },
+          detail: {
+            es: 'Elige una habitación alta si el gas es denso, o intermedia sin ventanas directas al exterior.',
+            en: 'Choose an interior room with the fewest exterior windows/doors and seal all air intakes.',
+            nl: 'Kies een centrale ruimte zonder buitenramen en sluit ventilatieroosters af.'
+          }
+        },
+        {
+          title: { es: 'Apagar ventilación mecánica', en: 'Cut off mechanical ventilation', nl: 'Ventilatie uitschakelen' },
+          detail: {
+            es: 'Desconecta o corta el diferencial de los extractores y sistemas de aire exterior en el cuadro eléctrico.',
+            en: 'Switch off HVAC and unplug or trip the circuit breaker for heat-recovery and bathroom ventilation units.',
+            nl: 'Trek de stekker van de ventilatie-unit uit of schakel de groep uit in de meterkast.'
+          }
+        }
+      ]
+    },
+
+    inundacion: {
+      id: 'inundacion',
+      icon: '🌊',
+      steps: [
+        {
+          title: { es: 'Decidir: ¿Subir o Salir?', en: 'Decide: Vertical refuge or evacuation', nl: 'Kies: Naar boven of evacueren' },
+          detail: {
+            es: 'Si el agua avanza rápidamente, evacúa en vertical a la planta más alta o azotea con acceso asegurado. No bajes a sótanos.',
+            en: 'If rapid flooding occurs, perform vertical evacuation to an upper floor or accessible roof. Never enter basements.',
+            nl: 'Bij snel stijgend water: ga naar de bovenste verdieping of dak. Ga nooit kelders in.'
+          }
+        },
+        {
+          title: { es: 'Cortar suministros antes del agua', en: 'Shut off utilities before submersion', nl: 'Nutsvoorzieningen uitschakelen' },
+          detail: {
+            es: 'Corta el cuadro eléctrico general y la llave de gas antes de que el agua alcance las instalaciones o el suelo se inunde.',
+            en: 'Switch off the main electrical breaker and gas valve before floodwaters reach electrical sockets or meter cabinets.',
+            nl: 'Schakel hoofdschakelaar elektra en gas uit voordat het water de meterkast bereikt.'
+          }
+        }
+      ]
+    }
+  },
+
+  homeChecklist: [
+    { id: 'water', category: 'vital', text: { es: 'Agua embotellada (mín. 3 L por persona y día para 72 h - 14 días)', en: 'Bottled drinking water (min 3 L/person/day for 72h - 14 days)', nl: 'Flessen drinkwater (min 3L/persoon/dag voor 72u - 14 dagen)' } },
+    { id: 'food', category: 'vital', text: { es: 'Comida no perecedera lista para comer (conservas, frutos secos, barritas)', en: 'Non-perishable shelf-stable food (canned goods, nuts, energy bars)', nl: 'Houdbaar voedsel zonder koken (blikken, noten, repen)' } },
+    { id: 'radio', category: 'comms', text: { es: 'Radio portátil FM a pilas o dinamo + pilas de repuesto', en: 'Portable battery/crank FM emergency radio + spare batteries', nl: 'Draagbare FM batterij-/opwindradio + reservebatterijen' } },
+    { id: 'torch', category: 'energy', text: { es: 'Linterna LED de mano o frontal + pilas nuevas', en: 'LED flashlight or headlamp + fresh batteries', nl: 'LED zaklamp of hoofdlamp + nieuwe batterijen' } },
+    { id: 'powerbank', category: 'energy', text: { es: 'Powerbank cargada al 100% y cables de teléfono', en: 'Powerbank charged to 100% and phone charging cables', nl: 'Volledig opgeladen powerbank + laadkabels' } },
+    { id: 'firstaid', category: 'health', text: { es: 'Botiquín de primeros auxilios y medicación crónica para 14 días', en: 'First aid kit and 14-day supply of personal prescription medications', nl: 'EHBO-doos en chronische medicatie voor 14 dagen' } },
+    { id: 'warmth', category: 'vital', text: { es: 'Mantas térmicas, sacos de dormir y ropa de abrigo por capas', en: 'Thermal blankets, sleeping bags and layered warm dry clothing', nl: 'Isolatiedekens, slaapzakken en warme kleding in lagen' } },
+    { id: 'hygiene', category: 'health', text: { es: 'Bolsas de basura gruesas, papel higiénico, toallitas húmedas y jabón', en: 'Heavy-duty garbage bags, toilet paper, sanitizing wipes and soap', nl: 'Stevige vuilniszakken, toiletpapier, vochtige doekjes en zeep' } },
+    { id: 'cash', category: 'admin', text: { es: 'Efectivo en billetes pequeños y monedas (€50 - €100 por persona)', en: 'Small-denomination emergency cash & coins (€50 - €100/person)', nl: 'Contant geld in kleine biljetten en munten (€50 - €100/persoon)' } },
+    { id: 'docs', category: 'admin', text: { es: 'Copia física impresa de identificaciones, seguros y teléfonos clave', en: 'Physical printed copies of IDs, insurance policies and key contacts', nl: 'Geprinte kopieën van identiteitsbewijzen, polissen en noodnummers' } },
+    { id: 'tools', category: 'vital', text: { es: 'Abrelatas manual, navaja multiusos y cinta adhesiva resistente', en: 'Manual can opener, multi-tool knife and heavy-duty duct tape', nl: 'Handmatige blikopener, zakmes/multitool en ducttape' } },
+    { id: 'pets', category: 'vital', text: { es: 'Suministros para mascotas: transportín, comida, agua y datos de chip', en: 'Pet emergency kit: carrier, pet food, pet water and microchip data', nl: 'Huisdier noodpakket: reismand, voer, water en chipgegevens' } }
+  ],
+
+  evacuationChecklist: [
+    { id: 'evac_id', text: { es: 'Documentación personal (DNI, pasaporte, tarjeta sanitaria)', en: 'Personal identification documents & health insurance cards', nl: 'Identiteitsbewijzen, paspoort en zorgpassen' } },
+    { id: 'evac_meds', text: { es: 'Medicación vital indispensable y recetas prescritas', en: 'Essential prescription medications and written dosages', nl: 'Levensnoodzakelijke medicatie en doktersrecepten' } },
+    { id: 'evac_keys', text: { es: 'Llaves de casa, coche y candados', en: 'House keys, car keys and padlock keys', nl: 'Huissleutels, autosleutels en fietssleutels' } },
+    { id: 'evac_water', text: { es: 'Botella de agua y barritas energéticas de bolsillo', en: 'Water bottle and portable energy rations', nl: 'Flesje water en energierepen' } },
+    { id: 'evac_pet', text: { es: 'Mascota asegurada en transportín con arnés y correa', en: 'Companion animal secured inside carrier with harness/leash', nl: 'Huisdier veilig in reismand met tuigje en lijn' } },
+    { id: 'evac_phone', text: { es: 'Móvil, batería externa y cable', en: 'Smartphone, backup battery pack and cable', nl: 'Mobiele telefoon, compacte powerbank en kabel' } }
+  ]
+};
+</script>
+    <script>'use strict';
+
+/**
+ * OpenRefugio Tools: WebAudio Metronome, Burn Timers, Check-in Reminder, and Screen Flashlight.
+ * Completely local, zero audio assets, works offline.
+ */
+window.OpenRefugioTools = (function() {
+  let audio = null;
+  let metronomo = null;
+  let compresiones = 0;
+  let cuentaQuemadura = null;
+  let restanQuemadura = 0;
+  let wakeLock = null;
+
+  function pitido(freq = 880, ms = 70, vol = 0.25) {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      if (audio.state === 'suspended') audio.resume();
+      const osc = audio.createOscillator();
+      const gain = audio.createGain();
+      osc.frequency.value = freq;
+      osc.type = 'square';
+      gain.gain.setValueAtTime(vol, audio.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + ms / 1000);
+      osc.connect(gain).connect(audio.destination);
+      osc.start();
+      osc.stop(audio.currentTime + ms / 1000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function startMetronome(onTick) {
+    stopMetronome();
+    compresiones = 0;
+    pitido(1100, 45, 0.3);
+    // 110 bpm ~= 545 ms per beat
+    metronomo = setInterval(() => {
+      compresiones++;
+      pitido(1100, 45, 0.3);
+      if (typeof onTick === 'function') onTick(compresiones);
+    }, 545);
+  }
+
+  function stopMetronome() {
+    if (metronomo) {
+      clearInterval(metronomo);
+      metronomo = null;
+    }
+  }
+
+  function isMetronomeActive() {
+    return metronomo !== null;
+  }
+
+  function startBurnTimer(minutes, onTick, onComplete) {
+    stopBurnTimer();
+    restanQuemadura = minutes * 60;
+    pitido(760, 60, 0.2);
+    cuentaQuemadura = setInterval(() => {
+      restanQuemadura--;
+      if (typeof onTick === 'function') onTick(restanQuemadura);
+      if (restanQuemadura <= 0) {
+        stopBurnTimer();
+        pitido(660, 220, 0.3);
+        setTimeout(() => pitido(880, 220, 0.3), 300);
+        setTimeout(() => pitido(660, 320, 0.3), 620);
+        if (typeof onComplete === 'function') onComplete();
+      }
+    }, 1000);
+  }
+
+  function stopBurnTimer() {
+    if (cuentaQuemadura) {
+      clearInterval(cuentaQuemadura);
+      cuentaQuemadura = null;
+    }
+  }
+
+  async function requestWakeLock() {
+    if ('wakeLock' in navigator && navigator.wakeLock) {
+      try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        wakeLock.addEventListener('release', () => { wakeLock = null; });
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
+    return false;
+  }
+
+  function releaseWakeLock() {
+    if (wakeLock) {
+      wakeLock.release().catch(() => {});
+      wakeLock = null;
+    }
+  }
+
+  return {
+    startMetronome,
+    stopMetronome,
+    isMetronomeActive,
+    startBurnTimer,
+    stopBurnTimer,
+    requestWakeLock,
+    releaseWakeLock,
+    pitido
+  };
+})();
+</script>
+    <script>'use strict';
+
+/**
+ * OpenRefugio - Main Application Engine
+ * Pure Vanilla JS, zero dependencies, client-side only.
+ */
+(function() {
+  const I18n = window.OpenRefugioI18n;
+  const Profile = window.OpenRefugioProfile;
+  const Content = window.OpenRefugioContent;
+  const Tools = window.OpenRefugioTools;
+
+  const STATE_KEY = 'openrefugio:state:v1';
+  let appState = {
+    checks: {},
+    emergencyMode: false,
+    emergencySince: 0
+  };
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STATE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        appState = { ...appState, ...parsed };
+      }
+    } catch (e) {
+      console.warn('Could not load app state:', e);
+    }
+    // Expire emergency mode after 12 hours
+    if (appState.emergencyMode && Date.now() - appState.emergencySince > 12 * 3600 * 1000) {
+      appState.emergencyMode = false;
+      appState.emergencySince = 0;
+      saveState();
+    }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STATE_KEY, JSON.stringify(appState));
+    } catch (e) {
+      console.error('Failed to save state:', e);
+    }
+  }
+
+  function toggleCheck(id) {
+    appState.checks[id] = !appState.checks[id];
+    saveState();
+    renderReadiness();
+  }
+
+  function isChecked(id) {
+    return !!appState.checks[id];
+  }
+
+  function getActiveRoute() {
+    return (location.hash || '#inicio').replace(/^#/, '');
+  }
+
+  function navigate(route) {
+    location.hash = '#' + route;
+  }
+
+  // DOM Elements
+  let mainEl = null;
+  let navEl = null;
+  let topbarEl = null;
+
+  function initApp() {
+    loadState();
+    mainEl = document.getElementById('main');
+    navEl = document.getElementById('navigation');
+    topbarEl = document.getElementById('topbar');
+
+    window.addEventListener('hashchange', renderCurrentRoute);
+    window.addEventListener('openrefugio:langchange', () => {
+      renderNav();
+      renderTopbar();
+      renderCurrentRoute();
+    });
+    window.addEventListener('openrefugio:profilechange', () => {
+      renderTopbar();
+      renderCurrentRoute();
+    });
+
+    renderNav();
+    renderTopbar();
+    renderCurrentRoute();
+  }
+
+  function renderTopbar() {
+    if (!topbarEl) return;
+    const prof = Profile.get();
+    const currentLang = I18n.getLanguage();
+
+    topbarEl.innerHTML = `
+      <div>
+        <span class="profile-badge">📍 ${escapeHtml(prof.regionPreset.toUpperCase())} · 👥 ${prof.adults + prof.minors}</span>
+        <a class="call" href="tel:${escapeHtml(prof.emergencyPhone)}">🚨 ${escapeHtml(prof.emergencyPhone || '112')}</a>
+      </div>
+      <div>
+        <div class="lang-picker" role="radiogroup" aria-label="${I18n.t('switchLanguage')}">
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="${currentLang === 'es'}">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="${currentLang === 'en'}">EN</button>
+          <button type="button" class="lang-btn" data-lang="nl" aria-pressed="${currentLang === 'nl'}">NL</button>
+        </div>
+        <button type="button" id="btn-emergency-toggle" class="${appState.emergencyMode ? 'danger-button' : 'button quiet'}">
+          ${appState.emergencyMode ? I18n.t('emergencyActive') : I18n.t('emergencyMode')}
+        </button>
+      </div>
+    `;
+
+    topbarEl.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        I18n.setLanguage(e.target.dataset.lang);
+      });
+    });
+
+    const emBtn = document.getElementById('btn-emergency-toggle');
+    if (emBtn) {
+      emBtn.addEventListener('click', () => {
+        appState.emergencyMode = !appState.emergencyMode;
+        appState.emergencySince = appState.emergencyMode ? Date.now() : 0;
+        document.body.classList.toggle('emergency', appState.emergencyMode);
+        saveState();
+        renderTopbar();
+      });
+    }
+
+    document.body.classList.toggle('emergency', !!appState.emergencyMode);
+  }
+
+  function renderNav() {
+    if (!navEl) return;
+    const route = getActiveRoute();
+
+    const items = [
+      ['inicio', '⌂', I18n.t('navHome')],
+      ['10minutos', '⏱', I18n.t('nav10min')],
+      ['simulador', '◈', I18n.t('navSim')],
+      ['perfil', '⚙', I18n.t('profileTitle')],
+      ['preparacion', '☑', I18n.t('navPrep')],
+      ['herramientas', '⏲', I18n.t('navTools')],
+      ['visual', '👁', I18n.t('navVisual')],
+      ['posters', '🖨', I18n.t('navPosters')],
+      ['copias', '💾', I18n.t('navBackup')]
+    ];
+
+    navEl.innerHTML = items.map(([id, symbol, label]) => `
+      <a href="#${id}" class="nav-link" aria-current="${route === id ? 'page' : 'false'}">
+        <span class="symbol">${symbol}</span>
+        <span>${escapeHtml(label)}</span>
+      </a>
+    `).join('');
+  }
+
+  function renderReadiness() {
+    const total = Content.homeChecklist.length + Content.evacuationChecklist.length;
+    let checked = 0;
+    Content.homeChecklist.forEach(item => { if (isChecked(item.id)) checked++; });
+    Content.evacuationChecklist.forEach(item => { if (isChecked(item.id)) checked++; });
+    const percent = Math.round((checked / total) * 100);
+
+    const el = document.getElementById('readiness-widget');
+    if (el) {
+      el.innerHTML = `
+        <div class="readiness">
+          <strong>${percent}%</strong>
+          <div>
+            <h3>${I18n.t('navPrep')}</h3>
+            <p>${checked} / ${total} ${I18n.t('allReady')}</p>
+            <div class="progress"><span style="width:${percent}%"></span></div>
+          </div>
+          <a href="#preparacion" class="button primary">${I18n.t('reviewed')}</a>
+        </div>
+      `;
+    }
+  }
+
+  function renderCurrentRoute() {
+    renderNav();
+    const route = getActiveRoute();
+    if (!mainEl) return;
+
+    window.scrollTo(0, 0);
+
+    switch (route) {
+      case 'inicio':
+        renderHomeRoute();
+        break;
+      case '10minutos':
+        render10MinRoute();
+        break;
+      case 'simulador':
+        renderSimulatorRoute();
+        break;
+      case 'perfil':
+        renderProfileRoute();
+        break;
+      case 'preparacion':
+        renderPreparednessRoute();
+        break;
+      case 'herramientas':
+        renderToolsRoute();
+        break;
+      case 'visual':
+        renderVisualRoute();
+        break;
+      case 'posters':
+        renderPostersRoute();
+        break;
+      case 'copias':
+        renderBackupRoute();
+        break;
+      default:
+        // Check if route is a scenario
+        if (Content.scenarios[route]) {
+          renderScenarioDetail(Content.scenarios[route]);
+        } else {
+          renderHomeRoute();
+        }
+        break;
+    }
+  }
+
+  function renderHomeRoute() {
+    const prof = Profile.get();
+    const lang = I18n.getLanguage();
+
+    const scenariosHtml = Object.values(Content.scenarios).map(sc => {
+      const firstStep = sc.steps[0];
+      const title = firstStep ? (firstStep.title[lang] || firstStep.title.es) : sc.id;
+      return `
+        <a href="#${sc.id}" class="panel scenario">
+          <span class="symbol">${sc.icon}</span>
+          <h3>${escapeHtml(I18n.t('scenario' + capitalize(sc.id)) || sc.id)}</h3>
+          <p>${escapeHtml(I18n.t('scenario' + capitalize(sc.id) + 'Desc') || '')}</p>
+          <span class="arrow">→</span>
+        </a>
+      `;
+    }).join('');
+
+    mainEl.innerHTML = `
+      <div class="hero">
+        <div>
+          <div class="eyebrow">${I18n.t('offlineBadge')}</div>
+          <h1>${I18n.t('appName')}</h1>
+          <p class="intro">${I18n.t('appSubtitle')}</p>
+        </div>
+        <div class="signal">
+          <small>${I18n.t('emergencyRadio')}</small>
+          <strong>FM</strong>
+          <div class="frequency">${escapeHtml(prof.emergencyRadio || 'RNE 5 / Radio 1')}</div>
+          <p>Alarma: ${escapeHtml(prof.emergencyPhone || '112')}</p>
+        </div>
+      </div>
+
+      <div id="readiness-widget"></div>
+
+      <div class="section-title">
+        <h2>${I18n.t('scenariosTitle')}</h2>
+      </div>
+      <div class="grid">
+        ${scenariosHtml}
+      </div>
+
+      <div class="warning info" style="margin-top:40px">
+        <h3>ℹ️ ${I18n.t('offlineBadge')}</h3>
+        <p>${I18n.t('disclaimerText')}</p>
+      </div>
+    `;
+
+    renderReadiness();
+  }
+
+  function renderScenarioDetail(sc) {
+    const lang = I18n.getLanguage();
+    const scTitle = I18n.t('scenario' + capitalize(sc.id)) || sc.id;
+    const scDesc = I18n.t('scenario' + capitalize(sc.id) + 'Desc') || '';
+
+    const stepsHtml = sc.steps.map((st, i) => `
+      <li>
+        <div>
+          <strong>${escapeHtml(st.title[lang] || st.title.es)}</strong>
+          <p>${escapeHtml(st.detail[lang] || st.detail.es)}</p>
+        </div>
+      </li>
+    `).join('');
+
+    mainEl.innerHTML = `
+      <div class="page-context">
+        <a href="#inicio">← ${I18n.t('navHome')}</a> / <span>${escapeHtml(scTitle)}</span>
+      </div>
+
+      <div class="section-title">
+        <div>
+          <span style="font-size:36px">${sc.icon}</span>
+          <h2>${escapeHtml(scTitle)}</h2>
+          <p class="intro">${escapeHtml(scDesc)}</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <ol class="steps">
+          ${stepsHtml}
+        </ol>
+      </div>
+
+      <div class="actions">
+        <a href="#inicio" class="button">${I18n.t('navHome')}</a>
+        <a href="#herramientas" class="button primary">${I18n.t('navTools')}</a>
+      </div>
+    `;
+  }
+
+  function render10MinRoute() {
+    const lang = I18n.getLanguage();
+    const items = [
+      {
+        t: { es: '1. Mantener la calma y evaluar peligro inmediato', en: '1. Stay calm and assess immediate hazards', nl: '1. Blijf kalm en beoordeel direct gevaar' },
+        d: { es: 'Humo, fuego, olor a gas o derrumbe: sal de inmediato. Si el peligro está fuera, confínate.', en: 'Smoke, fire, gas odor or collapse: leave immediately. If danger is outside, seal indoors.', nl: 'Rook, vuur, gaslucht of instortingsgevaar: direct naar buiten. Gevaar buiten: binnen schuilen.' }
+      },
+      {
+        t: { es: '2. Proteger a personas y animales de compañía', en: '2. Safeguard dependents & companion animals', nl: '2. Bescherm afhankelijke personen en dieren' },
+        d: { es: 'Reúne a menores y dependientes. Pon a las mascotas en su transportín o con correa asegurada.', en: 'Gather children and dependents. Secure companion animals inside carriers or with leashes.', nl: 'Verzamel kinderen en zorgbehoevenden. Plaats huisdieren in reismand of aan de lijn.' }
+      },
+      {
+        t: { es: '3. Cortar suministros si hay riesgo', en: '3. Shut off utilities if risk is detected', nl: '3. Sluit nutsvoorzieningen bij risico' },
+        d: { es: 'Si huele a gas o hay riesgo de inundación inminente, cierra la llave de gas y baja el diferencial general.', en: 'If gas leaks or flood threatens, shut the main gas valve and main circuit breaker.', nl: 'Bij gasreuk of overstromingsdreiging: sluit gaskraan en hoofdschakelaar elektra.' }
+      },
+      {
+        t: { es: '4. Sintonizar radio y canales oficiales', en: '4. Tune into emergency radio broadcast', nl: '4. Stem af op noodradio' },
+        d: { es: 'Enciende la radio a pilas en la emisora pública. Desactiva datos móviles para no saturar las antenas.', en: 'Turn on battery FM radio to official stations. Turn off cellular mobile data to relieve cell towers.', nl: 'Zet noodradio aan op de rampenzender. Schakel mobiele data uit om het netwerk te ontzien.' }
+      }
+    ];
+
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>⏱ ${I18n.t('nav10min')}</h2>
+      </div>
+      <div class="panel">
+        <ol class="steps">
+          ${items.map(it => `
+            <li>
+              <div>
+                <strong>${escapeHtml(it.t[lang] || it.t.es)}</strong>
+                <p>${escapeHtml(it.d[lang] || it.d.es)}</p>
+              </div>
+            </li>
+          `).join('')}
+        </ol>
+      </div>
+    `;
+  }
+
+  function renderSimulatorRoute() {
+    const prof = Profile.get();
+    let days = 3;
+
+    function calc() {
+      const persons = prof.adults + prof.minors + prof.dependents;
+      const waterPerPerson = 3; // L/day
+      const foodPerPerson = 3; // meals/day
+      const petWater = prof.petCount * prof.petWaterLitersPerDay;
+      const petFoodKg = (prof.petCount * prof.petFoodGramsPerDay * days) / 1000;
+
+      const totalWater = Math.round((persons * waterPerPerson + petWater) * days * 10) / 10;
+      const totalFood = persons * foodPerPerson * days;
+      const cash = (prof.adults * 70) + (prof.minors * 30);
+
+      return { totalWater, totalFood, cash, petFoodKg };
+    }
+
+    function update() {
+      const res = calc();
+      const wEl = document.getElementById('calc-water');
+      const fEl = document.getElementById('calc-food');
+      const cEl = document.getElementById('calc-cash');
+      const pEl = document.getElementById('calc-pet-food');
+
+      if (wEl) wEl.textContent = `${res.totalWater} L`;
+      if (fEl) fEl.textContent = `${res.totalFood} ${I18n.t('foodCalcTitle')}`;
+      if (cEl) cEl.textContent = `€${res.cash}`;
+      if (pEl) pEl.textContent = `${res.petFoodKg} kg`;
+    }
+
+    const res = calc();
+
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>◈ ${I18n.t('simulatorTitle')}</h2>
+      </div>
+
+      <div class="panel">
+        <div class="form-grid">
+          <div class="field">
+            <label>${I18n.t('simDays')}</label>
+            <select id="sim-days-select">
+              <option value="1">24 horas</option>
+              <option value="3" selected>72 horas (3 días)</option>
+              <option value="7">7 días (1 semana)</option>
+              <option value="14">14 días (2 semanas)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>${I18n.t('adults')} + ${I18n.t('minors')}</label>
+            <input type="text" readonly value="${prof.adults + prof.minors + prof.dependents} personas (${prof.adults} ad, ${prof.minors} min)">
+          </div>
+          <div class="field">
+            <label>${I18n.t('pets')}</label>
+            <input type="text" readonly value="${prof.petCount} (${prof.petType})">
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <small>${I18n.t('waterCalcTitle')}</small>
+          <div class="stat" id="calc-water">${res.totalWater} L</div>
+          <p class="muted">${I18n.t('waterFormulaNote')}</p>
+        </div>
+
+        <div class="panel">
+          <small>${I18n.t('foodCalcTitle')}</small>
+          <div class="stat" id="calc-food">${res.totalFood}</div>
+          <p class="muted">${I18n.t('foodFormulaNote')}</p>
+        </div>
+
+        <div class="panel">
+          <small>${I18n.t('cashCalcTitle')}</small>
+          <div class="stat" id="calc-cash">€${res.cash}</div>
+          <p class="muted">€70/adulto + €30/menor para contingencias sin TPV.</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="#perfil" class="button">${I18n.t('profileTitle')}</a>
+        <a href="#preparacion" class="button primary">${I18n.t('navPrep')}</a>
+      </div>
+    `;
+
+    const select = document.getElementById('sim-days-select');
+    if (select) {
+      select.addEventListener('change', (e) => {
+        days = parseInt(e.target.value, 10) || 3;
+        update();
+      });
+    }
+  }
+
+  function renderProfileRoute() {
+    const prof = Profile.get();
+
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>⚙ ${I18n.t('profileTitle')}</h2>
+        <small class="muted">${I18n.t('profileDesc')}</small>
+      </div>
+
+      <div class="panel">
+        <form id="profile-form">
+          <h3>👥 Miembros del Hogar</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label for="prof-adults">${I18n.t('adults')}</label>
+              <input type="number" id="prof-adults" min="1" max="20" value="${prof.adults}">
+            </div>
+            <div class="field">
+              <label for="prof-minors">${I18n.t('minors')}</label>
+              <input type="number" id="prof-minors" min="0" max="20" value="${prof.minors}">
+            </div>
+            <div class="field">
+              <label for="prof-dependents">${I18n.t('dependents')}</label>
+              <input type="number" id="prof-dependents" min="0" max="10" value="${prof.dependents}">
+            </div>
+          </div>
+
+          <h3 style="margin-top:24px">🐾 ${I18n.t('pets')}</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label for="prof-pettype">Tipo de mascota</label>
+              <select id="prof-pettype">
+                <option value="none" ${prof.petType === 'none' ? 'selected' : ''}>${I18n.t('petTypeNone')}</option>
+                <option value="cat" ${prof.petType === 'cat' ? 'selected' : ''}>${I18n.t('petTypeCat')}</option>
+                <option value="dog" ${prof.petType === 'dog' ? 'selected' : ''}>${I18n.t('petTypeDog')}</option>
+                <option value="other" ${prof.petType === 'other' ? 'selected' : ''}>${I18n.t('petTypeOther')}</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="prof-petcount">Número de animales</label>
+              <input type="number" id="prof-petcount" min="0" max="10" value="${prof.petCount}">
+            </div>
+            <div class="field">
+              <label for="prof-petwater">Agua (L/animal/día)</label>
+              <input type="number" step="0.1" id="prof-petwater" min="0" value="${prof.petWaterLitersPerDay}">
+            </div>
+          </div>
+
+          <h3 style="margin-top:24px">📍 ${I18n.t('regionPreset')}</h3>
+          <div class="form-grid">
+            <div class="field wide">
+              <label for="prof-preset">Preajuste de país</label>
+              <select id="prof-preset">
+                <option value="universal" ${prof.regionPreset === 'universal' ? 'selected' : ''}>${I18n.t('presetUniversal')}</option>
+                <option value="spain" ${prof.regionPreset === 'spain' ? 'selected' : ''}>${I18n.t('presetSpain')}</option>
+                <option value="netherlands" ${prof.regionPreset === 'netherlands' ? 'selected' : ''}>${I18n.t('presetNetherlands')}</option>
+                <option value="custom" ${prof.regionPreset === 'custom' ? 'selected' : ''}>${I18n.t('presetCustom')}</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="prof-emergency">${I18n.t('emergencyPhone')}</label>
+              <input type="text" id="prof-emergency" value="${escapeHtml(prof.emergencyPhone)}">
+            </div>
+            <div class="field">
+              <label for="prof-police">${I18n.t('policePhone')}</label>
+              <input type="text" id="prof-police" value="${escapeHtml(prof.policePhone)}">
+            </div>
+            <div class="field">
+              <label for="prof-radio">${I18n.t('emergencyRadio')}</label>
+              <input type="text" id="prof-radio" value="${escapeHtml(prof.emergencyRadio)}">
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="button primary">${I18n.t('saveProfile')}</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    const form = document.getElementById('profile-form');
+    const presetSelect = document.getElementById('prof-preset');
+
+    presetSelect.addEventListener('change', (e) => {
+      Profile.applyPreset(e.target.value);
+      renderProfileRoute();
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      Profile.save({
+        adults: parseInt(document.getElementById('prof-adults').value, 10) || 1,
+        minors: parseInt(document.getElementById('prof-minors').value, 10) || 0,
+        dependents: parseInt(document.getElementById('prof-dependents').value, 10) || 0,
+        petType: document.getElementById('prof-pettype').value,
+        petCount: parseInt(document.getElementById('prof-petcount').value, 10) || 0,
+        petWaterLitersPerDay: parseFloat(document.getElementById('prof-petwater').value) || 0.5,
+        regionPreset: document.getElementById('prof-preset').value,
+        emergencyPhone: document.getElementById('prof-emergency').value,
+        policePhone: document.getElementById('prof-police').value,
+        emergencyRadio: document.getElementById('prof-radio').value
+      });
+      alert(I18n.t('profileSaved'));
+    });
+  }
+
+  function renderPreparednessRoute() {
+    const lang = I18n.getLanguage();
+
+    const homeHtml = Content.homeChecklist.map(item => `
+      <label class="checkrow ${isChecked(item.id) ? 'checked' : ''}">
+        <input type="checkbox" data-check="${item.id}" ${isChecked(item.id) ? 'checked' : ''}>
+        <div>
+          <strong>${escapeHtml(item.text[lang] || item.text.es)}</strong>
+        </div>
+      </label>
+    `).join('');
+
+    const evacHtml = Content.evacuationChecklist.map(item => `
+      <label class="checkrow ${isChecked(item.id) ? 'checked' : ''}">
+        <input type="checkbox" data-check="${item.id}" ${isChecked(item.id) ? 'checked' : ''}>
+        <div>
+          <strong>${escapeHtml(item.text[lang] || item.text.es)}</strong>
+        </div>
+      </label>
+    `).join('');
+
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>☑ ${I18n.t('navPrep')}</h2>
+      </div>
+
+      <div class="panel">
+        <h3>🏠 Kit de Hogar (72 h - 14 días)</h3>
+        <div>${homeHtml}</div>
+      </div>
+
+      <div class="panel" style="margin-top:30px">
+        <h3>🎒 Bolsa de Salida (Evacuación Rápida)</h3>
+        <div>${evacHtml}</div>
+      </div>
+    `;
+
+    mainEl.querySelectorAll('input[data-check]').forEach(ch => {
+      ch.addEventListener('change', (e) => {
+        toggleCheck(e.target.dataset.check);
+        e.target.closest('.checkrow').classList.toggle('checked', e.target.checked);
+      });
+    });
+  }
+
+  function renderToolsRoute() {
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>⏲ ${I18n.t('toolsTitle')}</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="panel">
+          <h3>💓 ${I18n.t('metronomeTitle')}</h3>
+          <p class="muted">Ritmo sonoro asistido a 110 compresiones por minuto para maniobra de RCP según guía Cruz Roja/ERC.</p>
+          <div class="tool-big" id="rcp-display">0</div>
+          <div class="actions">
+            <button type="button" id="btn-rcp-toggle" class="button primary">${I18n.t('metronomeStart')}</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>💧 ${I18n.t('burnTimerTitle')}</h3>
+          <p class="muted">Enfría la quemadura con agua corriente templada/limpia durante 15 minutos exactos sin hielo.</p>
+          <div class="tool-big" id="burn-display">15:00</div>
+          <div class="actions">
+            <button type="button" id="btn-burn-start" class="button">${I18n.t('burnStart')}</button>
+            <button type="button" id="btn-burn-stop" class="button" hidden>Detener</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:20px">
+        <h3>🔦 ${I18n.t('flashlightTitle')}</h3>
+        <p class="muted">Usa toda la pantalla en blanco o ámbar con brillo máximo y bloqueo de apagado (Wake Lock).</p>
+        <div class="actions">
+          <button type="button" id="btn-light-white" class="button primary">Luz Blanca</button>
+          <button type="button" id="btn-light-warm" class="button">Luz Ámbar (Noche)</button>
+        </div>
+      </div>
+    `;
+
+    // Metronome logic
+    const rcpBtn = document.getElementById('btn-rcp-toggle');
+    const rcpDisp = document.getElementById('rcp-display');
+    rcpBtn.addEventListener('click', () => {
+      if (Tools.isMetronomeActive()) {
+        Tools.stopMetronome();
+        rcpBtn.textContent = I18n.t('metronomeStart');
+      } else {
+        Tools.startMetronome((cnt) => {
+          rcpDisp.textContent = cnt;
+        });
+        rcpBtn.textContent = I18n.t('metronomeStop');
+      }
+    });
+
+    // Burn timer logic
+    const burnStartBtn = document.getElementById('btn-burn-start');
+    const burnStopBtn = document.getElementById('btn-burn-stop');
+    const burnDisp = document.getElementById('burn-display');
+    burnStartBtn.addEventListener('click', () => {
+      burnStartBtn.hidden = true;
+      burnStopBtn.hidden = false;
+      Tools.startBurnTimer(15, (left) => {
+        const m = String(Math.floor(left / 60)).padStart(2, '0');
+        const s = String(left % 60).padStart(2, '0');
+        burnDisp.textContent = `${m}:${s}`;
+      }, () => {
+        burnStartBtn.hidden = false;
+        burnStopBtn.hidden = true;
+        burnDisp.textContent = '15:00';
+        alert('15 minutos completados. Cubre la quemadura con film o apósito limpio.');
+      });
+    });
+    burnStopBtn.addEventListener('click', () => {
+      Tools.stopBurnTimer();
+      burnStartBtn.hidden = false;
+      burnStopBtn.hidden = true;
+      burnDisp.textContent = '15:00';
+    });
+
+    // Flashlight logic
+    const makeLight = (warm) => {
+      const fl = document.createElement('div');
+      fl.id = 'linterna';
+      fl.className = warm ? 'calida' : '';
+      fl.innerHTML = `<button type="button" class="button" style="font-size:20px;padding:16px 28px">Cerrar Linterna</button>`;
+      document.body.appendChild(fl);
+      Tools.requestWakeLock();
+      fl.querySelector('button').addEventListener('click', () => {
+        Tools.releaseWakeLock();
+        fl.remove();
+      });
+    };
+    document.getElementById('btn-light-white').addEventListener('click', () => makeLight(false));
+    document.getElementById('btn-light-warm').addEventListener('click', () => makeLight(true));
+  }
+
+  function renderVisualRoute() {
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>👁 ${I18n.t('navVisual')}</h2>
+        <small class="muted">Ilustraciones universales de emergencia sin texto, accesibles e imprimibles.</small>
+      </div>
+
+      <div class="raster-guide-grid">
+        <div class="raster-guide">
+          <img src="imagenes/guias/hemorragia.webp" alt="Presión sobre hemorragia" onerror="this.src='icon-512.png'">
+          <div>
+            <h3>Presión sobre Hemorragia</h3>
+            <p>Presiona firmemente sobre la herida con tela limpia. No retires el apósito si se empapa; añade otro encima.</p>
+          </div>
+        </div>
+
+        <div class="raster-guide">
+          <img src="imagenes/guias/quemadura.webp" alt="Enfriamiento de quemadura" onerror="this.src='icon-512.png'">
+          <div>
+            <h3>Enfriamiento de Quemadura</h3>
+            <p>15 a 20 minutos bajo agua corriente limpia templada/fresca. Nunca aplicar hielo directo ni pomadas grasas.</p>
+          </div>
+        </div>
+
+        <div class="raster-guide">
+          <img src="imagenes/guias/atragantamiento.webp" alt="Maniobra de atragantamiento" onerror="this.src='icon-512.png'">
+          <div>
+            <h3>Maniobra de Atragantamiento</h3>
+            <p>5 golpes secos en la espalda entre las escápulas alternados con 5 compresiones abdominales (Heimlich).</p>
+          </div>
+        </div>
+
+        <div class="raster-guide">
+          <img src="imagenes/guias/recuperacion.webp" alt="Posición lateral de seguridad" onerror="this.src='icon-512.png'">
+          <div>
+            <h3>Posición Lateral de Seguridad</h3>
+            <p>Para personas inconscientes que respiran con normalidad. Mantiene la vía aérea abierta y evita asfixia.</p>
+          </div>
+        </div>
+
+        <div class="raster-guide">
+          <img src="imagenes/guias/mascota.webp" alt="Evacuación con mascota" onerror="this.src='icon-512.png'">
+          <div>
+            <h3>Mascota en Transportín</h3>
+            <p>Nunca evacuar con animales sueltos. Asegurar arnés, correa y transportín rígido ventilado.</p>
+          </div>
+        </div>
+
+        <div class="raster-guide">
+          <img src="imagenes/guias/gas.webp" alt="Cierre de llave de gas" onerror="this.src='icon-512.png'">
+          <div>
+            <h3>Cierre de Gas y Ventilación</h3>
+            <p>Girar la llave de paso 90 grados transversalmente al tubo. Ventilar y no generar ninguna chispa.</p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderPostersRoute() {
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>🖨 ${I18n.t('postersTitle')}</h2>
+        <small class="muted">${I18n.t('postersDesc')}</small>
+      </div>
+
+      <div class="panel">
+        <h3>Impresión Directa</h3>
+        <p>Puedes imprimir el plan completo de emergencia de tu hogar o utilizar el diálogo de impresión para generar etiquetas térmicas o avisos A4 para la puerta.</p>
+        <div class="actions">
+          <button type="button" class="button primary" onclick="window.print()">🖨 ${I18n.t('printNow')}</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderBackupRoute() {
+    mainEl.innerHTML = `
+      <div class="section-title">
+        <h2>💾 ${I18n.t('navBackup')}</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="panel">
+          <h3>📦 Exportación de Seguridad</h3>
+          <p class="muted">Descarga tu plan, inventario y configuración de perfil en un archivo JSON local.</p>
+          <div class="actions">
+            <button type="button" id="btn-export-json" class="button primary">${I18n.t('exportJson')}</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>📥 Importar Copia</h3>
+          <p class="muted">Restaura tu configuración en cualquier otro dispositivo sin tocar ningún servidor.</p>
+          <input type="file" id="input-import-json" accept=".json" style="margin-top:10px">
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:24px">
+        <h3>📄 Versión Portable Autocontenida</h3>
+        <p class="muted">Un único archivo HTML con toda la biblioteca, estilos, scripts y guías incrustadas para llevar en un pendrive o en el móvil sin necesidad de servidor.</p>
+        <div class="actions">
+          <a href="open-refugio-portable.html" download="open-refugio-portable.html" class="button primary">⬇️ ${I18n.t('downloadPortable')}</a>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('btn-export-json').addEventListener('click', () => {
+      const dump = {
+        app: 'OpenRefugio',
+        version: '1.0.0',
+        exportedAt: new Date().toISOString(),
+        profile: Profile.get(),
+        state: appState
+      };
+      const blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `open-refugio-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('input-import-json').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const parsed = JSON.parse(ev.target.result);
+          if (parsed.profile) Profile.save(parsed.profile);
+          if (parsed.state) {
+            appState = parsed.state;
+            saveState();
+          }
+          alert('Copia de seguridad restaurada con éxito.');
+          renderCurrentRoute();
+        } catch (err) {
+          alert('Error: el archivo no tiene un formato válido.');
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
+
+  function capitalize(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  document.addEventListener('DOMContentLoaded', initApp);
+})();
+</script>
+  </body>
+</html>

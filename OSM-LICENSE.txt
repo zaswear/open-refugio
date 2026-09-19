@@ -1,0 +1,27 @@
+MAPA OFFLINE DE REFUGIO
+
+© OpenStreetMap contributors
+Datos disponibles bajo la Open Database License (ODbL) 1.0.
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+
+La geometría derivada se distribuye en map-data.js. No contiene ubicaciones
+personales: los puntos privados que añadas se guardan en tu navegador.
+La base OSM y su origen deben conservar atribución y condiciones de licencia.
+
+Descarga: 2026-09-19. Bbox: oeste 5.06, sur 52.055, este 5.215, norte 52.125.
+Consulta utilizada en https://overpass-api.de/api/interpreter:
+[out:json][timeout:45];
+(way[highway](52.055,5.06,52.125,5.215);
+ way[waterway](52.055,5.06,52.125,5.215);
+ way[natural=water](52.055,5.06,52.125,5.215););
+out geom;
+
+Transformación: proyección local equirectangular, coordenadas SVG con precisión
+de una décima de unidad, eliminación de puntos casi coincidentes; clasificación
+visual por vías principales, calles, caminos, ciclovías, agua y áreas de agua.
+Coordenadas de direcciones públicas obtenidas mediante Nominatim (OpenStreetMap).
+Direcciones/contactos de servicios contrastados por separado con sus webs oficiales.
+
+Cobertura de referencia del centro y este de Utrecht, no toda la provincia.
+Sin rutas automáticas, tráfico, seguridad actual ni validación de accesibilidad.
