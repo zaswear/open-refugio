@@ -859,5 +859,155 @@
       .replace(/'/g, '&#39;');
   }
 
+  /* ------------------------------------------------------------------
+   * Sidebar search: fuzzy-free keyword index over routes, scenarios,
+   * visual guides, tools and posters. Results render in the current UI
+   * language and navigate via hash links.
+   * ------------------------------------------------------------------ */
+  const SEARCH_ROUTES = [
+    ['inicio', 'navHome'],
+    ['10minutos', 'nav10min'],
+    ['simulador', 'navSim'],
+    ['preparacion', 'navPrep'],
+    ['herramientas', 'navTools'],
+    ['visual', 'navVisual'],
+    ['posters', 'navPosters'],
+    ['copias', 'navBackup']
+  ];
+
+  const SEARCH_EXTRA = [
+    { route: 'herramientas', t: { es: 'Metrónomo RCP', en: 'CPR metronome', nl: 'Reanimatiemetronoom' }, d: { es: 'Ritmo de compresiones para reanimación cardiopulmonar.', en: 'Compression rhythm for cardiopulmonary resuscitation.', nl: 'Tempo voor hartmassage bij reanimatie.' } },
+    { route: 'herramientas', t: { es: 'Temporizador de enfriamiento de quemadura', en: 'Burn cooling timer', nl: 'Timer voor brandwonden' }, d: { es: 'Cuenta los 10–20 minutos de agua corriente sobre la quemadura.', en: 'Counts the 10–20 minutes of running water on the burn.', nl: 'Telt de 10–20 minuten koel water op de brandwond.' } },
+    { route: 'herramientas', t: { es: 'Linterna de pantalla', en: 'Screen flashlight', nl: 'Zaklamp van het scherm' }, d: { es: 'Pantalla blanca a máximo brillo para iluminar en un apagón.', en: 'White screen at full brightness to light up during a blackout.', nl: 'Wit scherm op volle helderheid bij een stroomstoring.' } },
+    { route: 'visual', t: { es: 'Presión sobre hemorragia', en: 'Bleeding pressure', nl: 'Druk op bloeding' }, d: { es: 'Presiona firmemente sobre la herida con tela limpia.', en: 'Press firmly on the wound with a clean cloth.', nl: 'Druk stevig op de wond met een schone doek.' } },
+    { route: 'visual', t: { es: 'Enfriamiento de quemadura', en: 'Burn cooling', nl: 'Brandwond koelen' }, d: { es: '15 a 20 minutos bajo agua corriente limpia templada o fresca.', en: '15 to 20 minutes under clean lukewarm or cool running water.', nl: '15 tot 20 minuten onder schoon, lauw of koel stromend water.' } },
+    { route: 'visual', t: { es: 'Maniobra de atragantamiento', en: 'Choking manoeuvre', nl: 'Verstikking manoeuvre' }, d: { es: '5 golpes secos en la espalda alternados con 5 compresiones abdominales.', en: '5 back blows alternating with 5 abdominal thrusts.', nl: '5 rugklappen afgewisseld met 5 buikstoten.' } },
+    { route: 'visual', t: { es: 'Posición lateral de seguridad', en: 'Recovery position', nl: 'Houding halfzijdig' }, d: { es: 'Para personas inconscientes que respiran con normalidad.', en: 'For unconscious people who are breathing normally.', nl: 'Voor bewusteloze personen die normaal ademen.' } },
+    { route: 'visual', t: { es: 'Mascota en transportín', en: 'Pet in carrier', nl: 'Huisdier in reismand' }, d: { es: 'Nunca evacuar con animales sueltos. Asegurar arnés y transportín.', en: 'Never evacuate with loose animals. Secure harness and carrier.', nl: 'Nooit evacueren met losse dieren. Harnas en reismand vastzetten.' } },
+    { route: 'visual', t: { es: 'Cierre de gas y ventilación', en: 'Gas shutoff and ventilation', nl: 'Gas dicht en ventileren' }, d: { es: 'Girar la llave de paso 90 grados y ventilar sin generar chispas.', en: 'Turn the shutoff valve 90 degrees and ventilate without sparks.', nl: 'Draai de hoofdkraan 90 graden en ventileer zonder vonken.' } }
+  ];
+
+  function normSearch(s) {
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[^a-z0-9 ]/g, '');
+  }
+
+  function searchLangText(obj, lang) {
+    if (!obj) return '';
+    return obj[lang] || obj.es || obj.en || '';
+  }
+
+  function buildSearchIndex() {
+    const lang = I18n.getLanguage();
+    const tr = I18n.translations || {};
+    const entries = [];
+
+    SEARCH_ROUTES.forEach(([route, key]) => {
+      entries.push({
+        route,
+        title: I18n.t(key),
+        text: '',
+        hay: [tr.es && tr.es[key], tr.en && tr.en[key], tr.nl && tr.nl[key]].join(' ')
+      });
+    });
+
+    Object.values(Content.scenarios).forEach((sc) => {
+      (sc.steps || []).forEach((step) => {
+        entries.push({
+          route: 'situacion/' + sc.id,
+          title: searchLangText(step.title, lang),
+          text: searchLangText(step.detail, lang),
+          hay: [step.title && step.title.es, step.title && step.title.en, step.title && step.title.nl,
+                step.detail && step.detail.es, step.detail && step.detail.en, step.detail && step.detail.nl].join(' ')
+        });
+      });
+    });
+
+    SEARCH_EXTRA.forEach((item) => {
+      entries.push({
+        route: item.route,
+        title: searchLangText(item.t, lang),
+        text: searchLangText(item.d, lang),
+        hay: [item.t.es, item.t.en, item.t.nl, item.d.es, item.d.en, item.d.nl].join(' ')
+      });
+    });
+
+    (Posters.items || []).forEach((poster) => {
+      const copy = poster.copy || {};
+      const lines = copy[lang] || copy.es || [];
+      entries.push({
+        route: 'posters',
+        title: lines[0] || poster.id,
+        text: lines.slice(1).join(' '),
+        hay: [copy.es, copy.en, copy.nl].filter(Array.isArray).map((l) => l.join(' ')).join(' ')
+      });
+    });
+
+    return entries.map((e) => ({ ...e, nHay: normSearch(e.hay + ' ' + e.title + ' ' + e.text) }));
+  }
+
+  function renderSearch(query) {
+    const box = document.getElementById('search-results');
+    const input = document.getElementById('search');
+    if (!box || !input) return;
+    const q = normSearch(query).trim();
+    if (q.length < 2) {
+      box.hidden = true;
+      box.innerHTML = '';
+      return;
+    }
+    const results = [];
+    buildSearchIndex().forEach((e) => {
+      let score = -1;
+      if (e.nHay.indexOf(q) !== -1) score = e.nHay.indexOf(' ' + q + ' ') !== -1 ? 0 : 2;
+      if (score !== -1) results.push({ e, score });
+    });
+    results.sort((a, b) => a.score - b.score || a.e.title.localeCompare(b.e.title));
+    const top = results.slice(0, 8);
+    if (!top.length) {
+      box.innerHTML = '<p>' + escapeHtml(I18n.t('searchNoResults')) + '</p>';
+    } else {
+      box.innerHTML = top.map(({ e }) => {
+        const detail = e.text ? e.text.slice(0, 90) + (e.text.length > 90 ? '…' : '') : e.title;
+        return '<a href="#' + escapeHtml(e.route) + '"><strong>' + escapeHtml(e.title) + '</strong><small>' + escapeHtml(detail) + '</small></a>';
+      }).join('');
+    }
+    box.hidden = false;
+  }
+
+  function applySearchLang() {
+    const input = document.getElementById('search');
+    const label = document.getElementById('search-label');
+    if (input) input.placeholder = I18n.t('searchPlaceholder');
+    if (label) label.textContent = I18n.t('searchLabel');
+  }
+
+  function wireSearch() {
+    const input = document.getElementById('search');
+    const box = document.getElementById('search-results');
+    if (!input || !box) return;
+    applySearchLang();
+    input.addEventListener('input', () => renderSearch(input.value));
+    input.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape') {
+        input.value = '';
+        box.hidden = true;
+        box.innerHTML = '';
+      }
+    });
+    box.addEventListener('click', (ev) => {
+      if (ev.target.closest('a')) {
+        input.value = '';
+        box.hidden = true;
+        box.innerHTML = '';
+      }
+    });
+    window.addEventListener('openrefugio:langchange', () => {
+      applySearchLang();
+      box.hidden = true;
+      box.innerHTML = '';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', wireSearch);
   document.addEventListener('DOMContentLoaded', initApp);
 })();

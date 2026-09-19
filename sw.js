@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'open-refugio-v4';
+const CACHE_NAME = 'open-refugio-v5';
 const CORE_FILES = [
   './',
   './index.html',
